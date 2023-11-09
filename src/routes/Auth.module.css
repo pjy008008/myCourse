@@ -1,0 +1,13 @@
+body {
+  margin-top: 27vh;
+  text-align: center;
+}
+.toggleBtn {
+    margin-top: 50px;
+  width: 313px;
+  height: 40px;
+  font-weight: bold;
+  background-color: darkblue;
+  color: white;
+  border: none;
+}
