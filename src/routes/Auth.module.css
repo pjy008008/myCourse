@@ -1,9 +1,8 @@
 body {
-  margin-top: 27vh;
+  margin-top: 3vh;
   text-align: center;
 }
 .toggleBtn {
-    margin-top: 50px;
   width: 313px;
   height: 40px;
   font-weight: bold;

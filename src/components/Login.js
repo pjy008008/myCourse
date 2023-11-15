@@ -1,12 +1,24 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./Login.module.css";
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(true));
+    setIsLoggedIn(true);
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
+
+    //Login data Validation
+
+    handleLogin();
     console.log(id);
   };
+
   const onChange = (event) => {
     const { name, value } = event.target;
     if (name === "id") {
@@ -15,6 +27,7 @@ const Login = () => {
       setPassword((prev) => value);
     }
   };
+
   return (
     <div>
       <h1 className={styles.title}>My Course</h1>
