@@ -121,7 +121,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
               setToggle((prev) => !prev);
             }}
           >
-            <span>로그인</span>
+            <span>로그인으로 이동</span>
           </button>
         </div>
         <div className={styles.leftContainer}>
