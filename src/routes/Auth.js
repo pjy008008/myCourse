@@ -11,13 +11,10 @@ const Auth = ({ setIsLoggedIn }) => {
   return (
     <div>
       {toggle ? (
-        <Register setIsLoggedIn={setIsLoggedIn} />
+        <Register setToggle={setToggle} setIsLoggedIn={setIsLoggedIn} />
       ) : (
-        <Login setIsLoggedIn={setIsLoggedIn} />
+        <Login setToggle={setToggle} setIsLoggedIn={setIsLoggedIn} />
       )}
-      <button className={styles.toggleBtn} onClick={onClick}>
-        {toggle ? <span>로그인으로 이동</span> : <span>회원가입으로 이동</span>}
-      </button>
     </div>
   );
 };

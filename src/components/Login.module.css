@@ -1,29 +1,80 @@
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
 .title {
-  color: darkblue;
-  font-size: 50px;
-  margin-top: 25vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 70px;
+  color: white;
+  margin-top: 0px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: left;
 }
-input{
-    width: 300px;
-    height: 30px;
-    border: 1px solid gray;
-    padding-left: 10px;
-    margin-bottom: 10px;
+.subTitle {
+  font-size: 25px;
+  font-weight: bold;
 }
-input.pwdInput{
-    margin-bottom: 20px;
+.container {
+    background-color: white;
+  width: 1000px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 23vh auto;
+  border-radius: 20px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-input:focus{
-    outline: 2px solid darkblue;
+.leftContainer {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+  background-color: #112d4e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 0px 0px 20px;
+  z-index: +1;
 }
-.submitBtn{
-    margin-bottom: 10px;
-    width: 313px;
-    height: 40px;
-    font-weight: bold;
-    background-color: darkblue;
-    color: white;
-    border: none;
+.rightContainer {
+  padding-top: 180px;
+  background-color: white;
+  border-radius: 0px 20px 20px 0px;
+}
+
+body {
+  text-align: center;
+  margin: 0px;
+  background-color: #dbe2ef;
+}
+input {
+  width: 300px;
+  height: 30px;
+  border: 1px solid gray;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+input.pwdInput {
+  margin-bottom: 20px;
+}
+input:focus {
+  outline: 2px solid #3f72af;
+}
+.submitBtn {
+  margin-bottom: 10px;
+  width: 313px;
+  height: 40px;
+  font-weight: bold;
+  background-color: #112d4e;
+  color: white;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.submitBtn:hover {
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 }

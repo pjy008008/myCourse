@@ -34,7 +34,7 @@ a {
   width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #d9d9d9;
+  background-color: #DBE2EF;
 }
 .listContainer {
   width: 10vw;
@@ -49,14 +49,14 @@ a {
   padding-top: 7px;
 }
 .listBorder {
-  background-color: #d9d9d9;
+  background-color: #DBE2EF;
   width: 170px;
   height: 50px;
   border-radius: 7px;
   text-align: center;
 }
 .tableContainer {
-  background-color: #d9d9d9;
+  background-color: #DBE2EF;
   padding: 30px;
   border-radius: 7px;
 }

@@ -1,12 +1,11 @@
 body {
-  margin-top: 3vh;
   text-align: center;
 }
 .toggleBtn {
   width: 313px;
   height: 40px;
   font-weight: bold;
-  background-color: darkblue;
+  background-color: #112D4E;
   color: white;
   border: none;
 }
