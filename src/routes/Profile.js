@@ -12,7 +12,7 @@ const Profile = () => {
     <div>
       <div className={styles.mainContainer}>
         <List />
-        <div>
+        <div className={styles.profileContainer}>
           <h2>Profile</h2>
           <button onClick={onClick}>Logout</button>
         </div>

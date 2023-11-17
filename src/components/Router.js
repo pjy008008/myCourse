@@ -5,7 +5,6 @@ import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Other from "../routes/Other";
-import Title from "./Title";
 
 const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
   const router = createBrowserRouter([
@@ -15,7 +14,6 @@ const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
         <div>
           {isLoggedIn ? (
             <div>
-              <Title />
               <Home />
             </div>
           ) : (
@@ -28,7 +26,6 @@ const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
       path: `${process.env.PUBLIC_URL}/profile`,
       element: (
         <div>
-          <Title />
           <Profile />
         </div>
       ),
@@ -37,7 +34,6 @@ const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
       path: `${process.env.PUBLIC_URL}/other`,
       element: (
         <div>
-          <Title />
           <Other />
         </div>
       ),

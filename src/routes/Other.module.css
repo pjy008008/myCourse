@@ -1,6 +1,5 @@
 .mainContainer {
   display: grid;
-  margin-top: 50px;
   /*grid template 조절 */
   grid-template-columns: 1fr 7fr;
 }
