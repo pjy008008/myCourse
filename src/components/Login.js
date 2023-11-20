@@ -1,22 +1,44 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 import styles from "./Login.module.css";
 const Login = ({ setToggle, setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    localStorage.setItem("isLoggedIn", JSON.stringify(true));
-    setIsLoggedIn(true);
+  const handleLogin = async () => {
+    // localStorage.setItem("isLoggedIn", JSON.stringify(true));
+    // setIsLoggedIn(true);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
     //Login data Validation
+    axios
+      .post(
+        "http://localhost:8080/login",
+        {
+          userid: id,
+          password: password,
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then(function (response) {
+        // console.log(response);
+        // localStorage.setItem("isLoggedIn", true);
+        // window.location.reload();
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        // setError((prev) => "로그인에 실패했습니다.");
+      });
 
     handleLogin();
-    console.log(id);
+    // console.log(id);
   };
 
   const onChange = (event) => {

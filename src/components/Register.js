@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Register.module.css";
+import axios from "axios";
 
 const Register = ({ setToggle, setIsLoggedIn }) => {
   const [id, setId] = useState("");
@@ -20,11 +21,34 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
       alert("비밀번호 불일치");
       return;
     }
+    axios
+      .post(
+        "http://localhost:8080/signup",
+        {
+          userid: id,
+          password: password1,
+          major: department,
+          stdnum: studentId,
+          grade: grade,
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then(function (response) {
+        // console.log(response);
+        // localStorage.setItem("isLoggedIn", true);
+        // window.location.reload();
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        // setError((prev) => "로그인에 실패했습니다.");
+      });
 
     //Register Data Validation
-    handleLogin();
-
-    console.log(id, password1, password2, department, studentId, grade);
+    // handleLogin();
+    // console.log(id, password1, password2, department, studentId, grade);
   };
   const onChange = (event) => {
     const { name, value } = event.target;
