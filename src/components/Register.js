@@ -9,6 +9,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
   const [department, setDepartment] = useState("");
   const [studentId, setStudentId] = useState("");
   const [grade, setGrade] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = () => {
     localStorage.setItem("isLoggedIn", JSON.stringify(true));
@@ -23,27 +24,33 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
     }
     axios
       .post(
-        "http://localhost:8080/signup",
+        "http://localhost:8080/sign-up",
         {
-          userid: id,
+          account: id,
           password: password1,
           major: department,
           stdnum: studentId,
           grade: grade,
+          subject: "[]",
         },
         {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+          Accept: "application/json;charset=UTF-8",
         }
       )
       .then(function (response) {
-        // console.log(response);
+        console.log(response);
+        if (response.status === 200) {
+          alert("회원가입 완료");
+        }
+
         // localStorage.setItem("isLoggedIn", true);
         // window.location.reload();
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
-        // setError((prev) => "로그인에 실패했습니다.");
+        setError((prev) => error.response.data.message);
       });
 
     //Register Data Validation
@@ -128,7 +135,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
             </select>
             <br />
             {password1 !== password2 ? (
-              <span className={styles.error}>비밀번호 불일치</span>
+              <span className={styles.error}>비밀번호가 일치하지 않습니다</span>
             ) : (
               <span className={styles.error}></span>
             )}

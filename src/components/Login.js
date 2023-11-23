@@ -6,38 +6,33 @@ const Login = ({ setToggle, setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
-    // localStorage.setItem("isLoggedIn", JSON.stringify(true));
-    // setIsLoggedIn(true);
-  };
-
   const onSubmit = (event) => {
     event.preventDefault();
-
     //Login data Validation
     axios
       .post(
-        "http://localhost:8080/login",
+        "http://localhost:8080/sign-in",
         {
-          userid: id,
+          account: id,
           password: password,
         },
         {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+          "Accept": "application/json;charset=UTF-8",
         }
       )
       .then(function (response) {
-        // console.log(response);
-        // localStorage.setItem("isLoggedIn", true);
+        console.log(response);
+        localStorage.setItem("token", response.data.data.token);
         // window.location.reload();
-        console.log(response.data);
+
+        setIsLoggedIn(true);
       })
       .catch(function (error) {
         console.log(error);
         // setError((prev) => "로그인에 실패했습니다.");
       });
 
-    handleLogin();
     // console.log(id);
   };
 
