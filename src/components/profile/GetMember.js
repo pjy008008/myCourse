@@ -78,40 +78,42 @@ const GetMember = ({ setIsLoggedIn }) => {
       <div className={styles.underContainer}>
         <div className={styles.academicInf}>
           <h2 className={styles.subTitle}>학사정보</h2>
-          <div className={styles.leftContainer}>
-            <div>학과 : 소프트웨어</div>
-            <div>
-              {user ? (
-                <div>학번: {user?.data?.stdnum}</div>
-              ) : (
-                <div>Loading...</div>
-              )}
+          <div className={styles.academicContext}>
+            <div className={styles.leftContainer}>
+              <div>학과 : 소프트웨어</div>
+              <div>
+                {user ? (
+                  <div>학번: {user?.data?.stdnum}</div>
+                ) : (
+                  <div>Loading...</div>
+                )}
+              </div>
+              <div>
+                {user ? (
+                  <div>이수학년/학기: {user?.data?.completionsem}</div>
+                ) : (
+                  <div>Loading...</div>
+                )}
+              </div>
             </div>
-            <div>
-              {user ? (
-                <div>이수학년/학기: {user?.data?.completionsem}</div>
-              ) : (
-                <div>Loading...</div>
-              )}
+            <div className={styles.rightContainer}>
+              {" "}
+              <div>
+                {user ? (
+                  <div>선호분야: {user?.data?.prefer}</div>
+                ) : (
+                  <div>Loading...</div>
+                )}
+              </div>
+              <div>
+                {user ? (
+                  <div>공개여부: {user?.data?.onoff ? "true" : "false"}</div>
+                ) : (
+                  <div>Loading...</div>
+                )}
+              </div>
+              <button onClick={delBtn}>탈퇴하기</button>
             </div>
-          </div>
-          <div className={styles.rightContainer}>
-            {" "}
-            <div>
-              {user ? (
-                <div>선호분야: {user?.data?.prefer}</div>
-              ) : (
-                <div>Loading...</div>
-              )}
-            </div>
-            <div>
-              {user ? (
-                <div>공개여부: {user?.data?.onoff ? "true" : "false"}</div>
-              ) : (
-                <div>Loading...</div>
-              )}
-            </div>
-            <button onClick={delBtn}>탈퇴하기</button>
           </div>
         </div>
       </div>

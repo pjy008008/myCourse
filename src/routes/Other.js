@@ -1,7 +1,6 @@
 import List from "../components/List";
 import styles from "./Other.module.css";
-import EditProfile from "../components/EditProfile";
-import GetSubject from "../components/index/GetSubject";
+import GetOthers from "../components/others/GetOthers";
 const Other = () => {
   return (
     <div>
@@ -11,8 +10,7 @@ const Other = () => {
             <List />
           </div>
         </div>
-        <h1>Other</h1>
-        <GetSubject />
+        <GetOthers />
       </div>
     </div>
   );
