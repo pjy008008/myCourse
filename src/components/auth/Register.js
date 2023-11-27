@@ -6,9 +6,10 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const [department, setDepartment] = useState("");
+  const [prefer, setPrefer] = useState("");
   const [studentId, setStudentId] = useState("");
-  const [grade, setGrade] = useState("");
+  const [completionsem, setCompletionsem] = useState("");
+  const [subject, setSubject] = useState([[], [], [], [], [], [], [], []]);
   const [error, setError] = useState("");
 
   const handleLogin = () => {
@@ -28,10 +29,11 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
         {
           account: id,
           password: password1,
-          major: department,
+          prefer: prefer,
           stdnum: studentId,
-          grade: grade,
-          subject: "[]",
+          completionsem: completionsem,
+          subject: subject,
+          onoff: true,
         },
         {
           "Content-Type": "application/json;charset=UTF-8",
@@ -50,6 +52,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
       })
       .catch(function (error) {
         console.log(error);
+        alert(error.response.data.message);
         setError((prev) => error.response.data.message);
       });
 
@@ -65,12 +68,12 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
       setPassword1((prev) => value);
     } else if (name === "password2") {
       setPassword2((prev) => value);
-    } else if (name === "department") {
-      setDepartment((prev) => value);
+    } else if (name === "prefer") {
+      setPrefer((prev) => value);
     } else if (name === "studentId") {
       setStudentId((prev) => value);
-    } else if (name === "grade") {
-      setGrade((prev) => value);
+    } else if (name === "completionsem") {
+      setCompletionsem((prev) => value);
     }
   };
   return (
@@ -109,29 +112,36 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
             />
 
             <br />
-            <input
-              required
-              onChange={onChange}
-              placeholder="학과"
-              name="department"
-              value={department}
-              type="text"
-            />
+            <select value={prefer} onChange={onChange} name="prefer">
+              <option value="">선호 분야</option>
+              <option value="ai">AI</option>
+              <option value="cs">컴퓨터 시스템</option>
+              <option value="coding">개발자</option>
+              <option value="teach">교직 이수</option>
+            </select>
             <br />
             <select value={studentId} onChange={onChange} name="studentId">
-              <option value="">학번을 고르세요</option>
+              <option value="">학번</option>
               <option value="20">20</option>
               <option value="21">21</option>
               <option value="22">22</option>
               <option value="23">23</option>
             </select>
             <br />
-            <select value={grade} onChange={onChange} name="grade">
-              <option value="">학년을 고르세요</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+            <select
+              value={completionsem}
+              onChange={onChange}
+              name="completionsem"
+            >
+              <option value="">이수 학년/학기</option>
+              <option value="1">1학년 1학기</option>
+              <option value="2">1학년 2학기</option>
+              <option value="3">2학년 1학기</option>
+              <option value="4">2학년 2학기</option>
+              <option value="5">3학년 1학기</option>
+              <option value="6">3학년 2학기</option>
+              <option value="7">4학년 1학기</option>
+              <option value="8">4학년 2학기</option>
             </select>
             <br />
             {password1 !== password2 ? (

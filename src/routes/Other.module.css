@@ -1,5 +1,10 @@
 .mainContainer {
-  display: grid;
-  /*grid template 조절 */
-  grid-template-columns: 1fr 7fr;
+  background-color: #e7e7e7;
+  width: 100vw;
+  height: 100vh;
+}
+.titleContainer {
+  width: 100vw;
+  background-color: #1e2d4b;
+  padding-bottom: 10px;
 }

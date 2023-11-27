@@ -1,8 +1,5 @@
 .mainContainer {
-  display: grid;
-  /*grid template 조절 */
-  grid-template-columns: 1fr 7fr;
-}
-.profileContainer{
-  background-color: #DBE2EF;
+  width: 100vw;
+  height: 100vh;
+  background-color: #112d4e;
 }

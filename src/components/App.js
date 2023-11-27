@@ -3,12 +3,13 @@ import AppRouter from "./Router";
 import { useEffect } from "react";
 
 function App() {
+  //css 할 시 useState안의 값 변경해놓고 하면 편함
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const storedLoginStatus = localStorage.getItem("isLoggedIn");
-    if (storedLoginStatus) {
-      setIsLoggedIn(JSON.parse(storedLoginStatus));
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setIsLoggedIn(true);
     }
   }, []);
 

@@ -18,18 +18,18 @@ const Login = ({ setToggle, setIsLoggedIn }) => {
         },
         {
           "Content-Type": "application/json;charset=UTF-8",
-          "Accept": "application/json;charset=UTF-8",
+          Accept: "application/json;charset=UTF-8",
         }
       )
       .then(function (response) {
         console.log(response);
         localStorage.setItem("token", response.data.data.token);
         // window.location.reload();
-
         setIsLoggedIn(true);
       })
       .catch(function (error) {
         console.log(error);
+        alert(error.response.data.message);
         // setError((prev) => "로그인에 실패했습니다.");
       });
 

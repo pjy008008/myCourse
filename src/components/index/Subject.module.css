@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+  padding-left: 50px;
+  text-align: left;
+}
+.selectContainer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 175px 175px;
+  justify-items: center;
+  gap: 25px;
+  padding-left: 36px;
+}
+.selection {
+  width: 175px;
+  height: 47px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}

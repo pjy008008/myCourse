@@ -14,20 +14,15 @@ const List = () => {
   };
   return (
     <div className={styles.listContainer}>
-      <h1 className={styles.title}>My Course</h1>
-      <div className={styles.listBorder}>
-        <h2 onClick={mainClick} className={styles.list}>
-          시간표
-        </h2>
-      </div>
+      <h1 onClick={mainClick} className={styles.title}>My Course</h1>
       <div className={styles.listBorder}>
         <h2 onClick={profileClick} className={styles.list}>
-          프로필
+          Profile
         </h2>
       </div>
       <div className={styles.listBorder}>
         <h2 onClick={otherClick} className={styles.list}>
-          둘러보기
+          Community
         </h2>
       </div>
     </div>
