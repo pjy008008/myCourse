@@ -112,7 +112,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
             />
 
             <br />
-            <select value={prefer} onChange={onChange} name="prefer">
+            <select required value={prefer} onChange={onChange} name="prefer">
               <option value="" disabled hidden>선호 분야</option>
               <option value="ai">AI</option>
               <option value="cs">컴퓨터 시스템</option>
@@ -120,7 +120,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
               <option value="teach">교직 이수</option>
             </select>
             <br />
-            <select value={studentId} onChange={onChange} name="studentId">
+            <select required value={studentId} onChange={onChange} name="studentId">
               <option value="" disabled hidden>학번</option>
               <option value="23">23학번</option>
               <option value="23">22학번</option>
@@ -131,6 +131,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
             </select>
             <br />
             <select
+              required
               value={completionsem}
               onChange={onChange}
               name="completionsem"
