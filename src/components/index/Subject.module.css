@@ -19,12 +19,14 @@
   padding-left: 15px;
   overflow-y: hidden; /* 수직 스크롤 제거 */
 }
-
+.checkBox {
+  width: 22px;
+  height: 22px;
+}
 .selection {
   width: 175px;
   height: 47px;
   border-radius: 5px;
   font-weight: bold;
   font-size: 15px;
-  
 }

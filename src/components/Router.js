@@ -5,6 +5,7 @@ import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import Other from "../routes/Other";
+import OtherProfile from "../routes/OtherProfile";
 
 const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
   const router = createBrowserRouter([
@@ -35,6 +36,14 @@ const AppRouter = ({ isLoggedIn, setIsLoggedIn }) => {
       element: (
         <div>
           <Other />
+        </div>
+      ),
+    },
+    {
+      path: `${process.env.PUBLIC_URL}/other/:id`,
+      element: (
+        <div>
+          <OtherProfile />
         </div>
       ),
     },

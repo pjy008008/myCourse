@@ -5,10 +5,12 @@ import cs from "../../image/cs.png";
 import coding from "../../image/coding.png";
 import teach from "../../image/teach.png";
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const GetOthers = () => {
   const [userData, setUserData] = useState([]);
-
+  const { userId } = useParams();
+  console.log(userId);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,21 +43,22 @@ const GetOthers = () => {
       </div>
     );
   };
-
   return (
     <div className={styles.mainContainer}>
       {userData ? (
         userData.map((item, index) => (
-          <div className={styles.userContainer} key={index}>
-            <div>{chkPre(item)}</div>
-            <div className={styles.textContainer}>
-              <div className={styles.boldText}>학번</div>
-              <div>{item.stdnum}</div>
-              <div className={styles.boldText}>이수학년/학기</div>
-              <div>{item.completionsem}</div>
+          <Link to={`/other/${item.account}`}>
+            <div className={styles.userContainer} key={index}>
+              <div>{chkPre(item)}</div>
+              <div className={styles.textContainer}>
+                <div className={styles.boldText}>학번</div>
+                <div>{item.stdnum}</div>
+                <div className={styles.boldText}>이수학년/학기</div>
+                <div>{item.completionsem}</div>
+              </div>
+              {/* 여기에 필요한 다른 데이터 렌더링 */}
             </div>
-            {/* 여기에 필요한 다른 데이터 렌더링 */}
-          </div>
+          </Link>
         ))
       ) : (
         <div>Loading...</div>

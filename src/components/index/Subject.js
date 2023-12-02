@@ -71,6 +71,7 @@ const Subject = () => {
             ? subjectData.map((item, index) => (
                 <li key={index}>
                   <p>
+                    <input className={styles.checkBox} type="checkbox" />
                     {item.category}-{item.subname}-{item.score}
                   </p>
                   {/* 여기에 필요한 다른 데이터 렌더링 */}
