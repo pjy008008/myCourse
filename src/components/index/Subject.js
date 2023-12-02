@@ -1,5 +1,9 @@
 import axios from "axios";
 import styles from "./Subject.module.css";
+import ai from "../../image/1.png";
+import cs from "../../image/3.png";
+import coding from "../../image/2.png";
+import teach from "../../image/4.png";
 import { useState, useEffect } from "react";
 
 const Subject = () => {
@@ -85,7 +89,7 @@ const Subject = () => {
                 .map((item, index) => (
                   <li key={index}>
                     <p>
-                      {item.category}-{item.subname}-{item.score}
+                      {item.category}-{item.subname}-{item.score} {item.ai && <img src={ai} alt="ai" />}{item.cs && <img src={cs} alt="cs" />}{item.coding && <img src={coding} alt="coding"/>}{item.teach && <img src={teach} alt="teach" />}
                     </p>
                     {/* 여기에 필요한 다른 데이터 렌더링 */}
                   </li>
