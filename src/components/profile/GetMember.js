@@ -136,7 +136,6 @@ const GetMember = ({ setIsLoggedIn }) => {
                 name="prePassword"
                 placeholder="현재 비밀번호"
               />
-              {prePassword}
             </div>
             <div>
               <input
