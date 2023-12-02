@@ -8,6 +8,7 @@
     width: 100%;
   }
 }
+
 .title {
   font-size: 70px;
   color: white;
@@ -16,21 +17,24 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: left;
 }
+
 .subTitle {
   color: #112D4E;
-  font-size: 25px;
+  font-size: 50px;
   font-weight: bold;
 }
+
 .container {
   background-color: white;
-  width: 1000px;
-  height: 600px;
+  width: 1100px;
+  height: 650px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 23vh auto;
+  margin: 8vh auto;
   border-radius: 20px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
 .leftContainer {
   animation-duration: 1.5s;
   animation-name: slidein;
@@ -41,8 +45,9 @@
   border-radius: 20px 0px 0px 20px;
   z-index: +1;
 }
+
 .rightContainer {
-  padding-top: 180px;
+  padding-top: 100px;
   background-color: white;
   border-radius: 0px 20px 20px 0px;
 }
@@ -52,13 +57,17 @@ body {
   margin: 0px;
   background-color: #dbe2ef;
 }
+
 input {
+  font-size: 17px;
   width: 300px;
-  height: 30px;
-  border: 1px solid gray;
-  padding-left: 10px;
-  margin-bottom: 10px;
+  height: 38px;
+  border: 1.5px solid gray;
+  padding-left: 14px;
+  margin-bottom: 7px;
+  border-radius: 5px;
 }
+
 input.pwdInput {
   margin-bottom: 20px;
 }
@@ -66,9 +75,10 @@ input:focus {
   outline: 2px solid #3f72af;
 }
 .submitBtn {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   width: 313px;
   height: 40px;
+  font-size: 15px;
   font-weight: bold;
   background-color: #112d4e;
   color: white;
@@ -78,4 +88,4 @@ input:focus {
 }
 .submitBtn:hover {
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
-}
+} 

@@ -1,20 +1,30 @@
-ul {
-  list-style: none;
+.subjectList {
+  list-style-type: none;
   padding-left: 50px;
   text-align: left;
+  height: 83vh;
+  overflow-y: auto; /* 수직 스크롤 활성화 */
+}
+.subjectList::-webkit-scrollbar {
+  width: 17px;
+}
+.subjectList::-webkit-scrollbar-thumb {
+  background-color: #dbe2ef;
 }
 .selectContainer {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 175px 175px;
+  grid-template-columns: 190px 190px;
   justify-items: center;
-  gap: 25px;
-  padding-left: 36px;
+  padding-left: 15px;
+  overflow-y: hidden; /* 수직 스크롤 제거 */
 }
+
 .selection {
   width: 175px;
   height: 47px;
   border-radius: 5px;
   font-weight: bold;
   font-size: 15px;
+  
 }
