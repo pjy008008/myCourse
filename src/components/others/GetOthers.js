@@ -5,8 +5,10 @@ import cs from "../../image/cs.png";
 import coding from "../../image/coding.png";
 import teach from "../../image/teach.png";
 import { useState, useEffect } from "react";
+
 const GetOthers = () => {
   const [userData, setUserData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +23,6 @@ const GetOthers = () => {
           }
         );
         setUserData(response.data.data);
-        console.log(userData);
       } catch (error) {
         console.log(error);
       }
@@ -29,25 +30,29 @@ const GetOthers = () => {
 
     fetchData();
   }, []);
+
   const chkPre = (item) => {
-    if (item.prefer === "ai") {
-      return <img src={ai} alt="ai" />;
-    }else if(item.prefer==="cs"){
-        return <img src={cs} alt="cs" />;
-    }else if(item.prefer==="teach"){
-        return <img src={teach} alt="teach" />;
-    }else if(item.prefer==="coding"){
-        return <img src={coding} alt="codding" />;
-    }
+    return (
+      <div className={styles.imageContainer}>
+        {item.prefer === "ai" && <img src={ai} alt="ai" />}
+        {item.prefer === "cs" && <img src={cs} alt="cs" />}
+        {item.prefer === "teach" && <img src={teach} alt="teach" />}
+        {item.prefer === "coding" && <img src={coding} alt="coding" />}
+      </div>
+    );
   };
+
   return (
     <div className={styles.mainContainer}>
       {userData ? (
         userData.map((item, index) => (
           <div className={styles.userContainer} key={index}>
             <div>{chkPre(item)}</div>
-            <div>
-              {item.stdnum}-{item.completionsem}
+            <div className={styles.textContainer}>
+              <div className={styles.boldText}>학번</div>
+              <div>{item.stdnum}</div>
+              <div className={styles.boldText}>이수학년/학기</div>
+              <div>{item.completionsem}</div>
             </div>
             {/* 여기에 필요한 다른 데이터 렌더링 */}
           </div>
@@ -58,4 +63,5 @@ const GetOthers = () => {
     </div>
   );
 };
+
 export default GetOthers;
