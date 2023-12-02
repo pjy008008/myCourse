@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AppRouter from "./Router";
 import { useEffect } from "react";
+import React from "react";
 
 function App() {
   //css 할 시 useState안의 값 변경해놓고 하면 편함
