@@ -66,7 +66,7 @@ const Subject = () => {
         </select>
       </div>
       <div>
-        <ul>
+        <ul className={styles.subjectList}>
           {grade === "" && sem === ""
             ? subjectData.map((item, index) => (
                 <li key={index}>

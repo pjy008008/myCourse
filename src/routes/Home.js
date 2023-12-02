@@ -77,11 +77,12 @@ const Home = () => {
           </div>
           <div className={styles.choiceContainer}>
             <button onClick={submitBtn} className={styles.submitBtn}>
-              My Course저장
+              My Course 
+              저장
             </button>
             <div className={styles.semSelect}>
               <select id={styles.select} value={sem} onChange={onChange} name="sem">
-                <option value="">학년 학기</option>
+                <option value="">시간표를 입력할 칸을 선택해주세요</option>
                 <option value="1">1학년 1학기</option>
                 <option value="2">1학년 2학기</option>
                 <option value="1">2학년 1학기</option>
