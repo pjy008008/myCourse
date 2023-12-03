@@ -123,11 +123,11 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
             <select required value={studentId} onChange={onChange} name="studentId">
               <option value="" disabled hidden>학번</option>
               <option value="23">23학번</option>
-              <option value="23">22학번</option>
-              <option value="23">21학번</option>
-              <option value="23">20학번</option>
-              <option value="23">19학번</option>
-              <option value="23">18학번</option>
+              <option value="22">22학번</option>
+              <option value="21">21학번</option>
+              <option value="20">20학번</option>
+              <option value="19">19학번</option>
+              <option value="18">18학번</option>
             </select>
             <br />
             <select
