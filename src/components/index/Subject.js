@@ -56,6 +56,7 @@ const Subject = () => {
     }
     return false;
   }
+
   const onChange = (event) => {
     const { name, value } = event.target;
     if (name === "grade") {

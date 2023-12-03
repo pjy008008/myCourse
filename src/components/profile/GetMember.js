@@ -13,6 +13,8 @@ const GetMember = ({ setIsLoggedIn }) => {
   const [prefer, setPrefer] = useState();
   const [isPublic, setIsPublic] = useState();
   const [data, setData] = useState({});
+  const [stdnum, setStdnum] = useState();
+  const [subject, setSubject] = useState();
   const navigate = useNavigate();
 
   const onClick = () => {
@@ -34,6 +36,8 @@ const GetMember = ({ setIsLoggedIn }) => {
       prefer: prefer,
       completionsem: sem,
       onoff: isPublic,
+      stdnum:stdnum,
+      subject:subject,
       ...(newPassword1 !== "" && { newPassword: newPassword1 }),
     };
 
@@ -106,6 +110,8 @@ const GetMember = ({ setIsLoggedIn }) => {
       setPrefer(response.data.data.prefer);
       setSem(response.data.data.completionsem);
       setIsPublic(response.data.data.onoff);
+      setSubject(response.data.data.subject);
+      setStdnum(response.data.data.stdnum);
       console.log(response.data);
     } catch (error) {
       console.log(error);
