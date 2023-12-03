@@ -41,6 +41,7 @@ const OtherProfile = () => {
           (user) => user.account === params.id
         );
         setUserData(userWithMatchingAccount);
+        console.log(userData);
       } catch (error) {
         console.log(error);
       }

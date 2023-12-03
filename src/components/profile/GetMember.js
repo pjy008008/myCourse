@@ -38,8 +38,8 @@ const GetMember = ({ setIsLoggedIn }) => {
       prefer: prefer,
       completionsem: sem,
       onoff: isPublic,
-      stdnum:stdnum,
-      subject:subject,
+      stdnum: stdnum,
+      subject: subject,
       ...(newPassword1 !== "" && { newPassword: newPassword1 }),
     };
 
