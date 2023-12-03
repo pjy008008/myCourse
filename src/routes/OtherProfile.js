@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import styles from "./OtherProfile.module.css";
+import List from "../components/List";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -6,25 +8,6 @@ const OtherProfile = () => {
   const params = useParams();
   const [userData, setUserData] = useState(null);
 
-  const getSem = (key) => {
-    if (key === 0) {
-      return <p>1학년 1학기</p>;
-    } else if (key === 1) {
-      return <p>1학년 2학기</p>;
-    } else if (key === 2) {
-      return <p>2학년 1학기</p>;
-    } else if (key === 3) {
-      return <p>2학년 2학기</p>;
-    } else if (key === 4) {
-      return <p>3학년 1학기</p>;
-    } else if (key === 5) {
-      return <p>3학년 2학기</p>;
-    } else if (key === 6) {
-      return <p>4학년 1학기</p>;
-    } else if (key === 7) {
-      return <p>4학년 2학기</p>;
-    }
-  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,26 +32,48 @@ const OtherProfile = () => {
     };
 
     fetchData();
-  }, [params.id]); // params.id를 의존성으로 추가
+  }, [params.id]);
 
   return (
     <div>
-      {userData ? (
-        <div>
-          <h2>시간표</h2>
-          {userData.subject.map((semester, i) => (
-            <div key={i}>
-              <h3>{getSem(i)}</h3>
-              {semester.map((subjectCode, j) => (
-                <p key={j}>{`과목: ${subjectCode}`}</p>
-              ))}
-            </div>
-          ))}
-          {/* 여기에 다른 사용자 정보를 표시하세요 */}
+      <div className={styles.mainContainer}>
+        <div className={styles.titleContainer}>
+            <List />
+          {/* <div className={styles.title}>
+          </div> */}
         </div>
-      ) : (
-        <div>Loading...</div>
-      )}
+        {userData ? (
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th className={`${styles.tableLeft} ${styles.top}`}></th>
+                  <th className={styles.top}>1학기</th>
+                  <th className={`${styles.tableRight} ${styles.top}`}>
+                    2학기
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[0, 2, 4, 6].map((row) => (
+                  <tr key={row}>
+                    <td className={styles.tableLeft}>{row / 2 + 1}</td>
+                    {[0, 1].map((col) => (
+                      <td key={col}>
+                        {userData.subject[row + col].map((subjectCode, i) => (
+                          <p key={i}>{`과목: ${subjectCode}`}</p>
+                        ))}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
     </div>
   );
 };
