@@ -3,6 +3,8 @@ import styles from "./GetMember.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { prependListener } from "process";
+import cbnu from "../../image/cbnu.png";
+import link from "../../image/link.png";
 
 const GetMember = ({ setIsLoggedIn }) => {
   const [user, setUser] = useState();
@@ -123,42 +125,77 @@ const GetMember = ({ setIsLoggedIn }) => {
           <form onSubmit={onSubmit}>
             <div>
               {user ? (
-                <div>아이디: {user?.data?.account}</div>
+                <div className={styles.textContainer}>
+                  <div className={styles.boldText}>아이디</div>
+                  <div>{user?.data?.account}</div>
+                </div>
               ) : (
                 <div>Loading...</div>
               )}
             </div>
-            <div>
-              <input
-                onChange={onChange}
-                value={prePassword}
-                required
-                name="prePassword"
-                placeholder="현재 비밀번호"
-              />
+            <div className={styles.textleftContainer}>
+                <div>현재 비밀번호
+                    <input
+                      className={styles.marginLeft}
+                      onChange={onChange}
+                      value={prePassword}
+                      required
+                      name="prePassword"
+                      placeholder="현재 비밀번호"
+                  />
+                </div>
             </div>
-            <div>
+            <div className={styles.textleftContainer}>변경 비밀번호
               <input
+                className={styles.marginLeft}
                 onChange={onChange}
                 value={newPassword1}
                 name="newPassword1"
                 placeholder="변경 비밀번호"
               />
             </div>
-            <div>
+            <div className={styles.textleftContainer}>비밀번호 확인
               <input
+                className={styles.marginLeft}
                 onChange={onChange}
                 value={newPassword2}
                 name="newPassword2"
                 placeholder="비밀번호 확인"
               />
             </div>
-            <button type="submit">변경</button>
+            <button className={styles.changeBtn} type="submit">변경</button>
           </form>
         </div>
 
         <div className={styles.schoolInf}>
-          <h2 className={styles.subTitle}>충북대학교</h2>
+          
+            <img src={cbnu} alt="CBNU Logo" className={`${styles.imageContainer} ${styles.cbnuLogo}`}  />
+            <div className={styles.textContainer3}>
+              <div className={styles.boldText}>개신누리</div>
+              <a href="https://eis.cbnu.ac.kr/cbnuLogin?1645100877" target="_blank" rel="noopener noreferrer">
+                <img src={link} alt="link" className={styles.imageContainer} />
+              </a> 
+            </div>
+            <div className={styles.textContainer3}>
+              <div className={styles.boldText}>졸업과정 확인</div>
+              <a href="https://www.chungbuk.ac.kr/site/f09/boardList.do?boardSeq=636&key=1446&part=B00000" target="_blank" rel="noopener noreferrer">
+                <img src={link} alt="link" className={styles.imageContainer} />
+              </a>
+            </div>
+            <div className={styles.textContainer3}>
+              <div className={styles.boldText}>학과 홈페이지</div>
+              <a href="https://software.cbnu.ac.kr/" target="_blank" rel="noopener noreferrer">
+                <img src={link} alt="link" className={styles.imageContainer} />
+              </a>
+            </div>
+            <div className={styles.textContainer3}>
+              <div className={styles.boldText}>sw중심사업단</div>
+              <a href="https://sw7up.cbnu.ac.kr/home" target="_blank" rel="noopener noreferrer">
+                <img src={link} alt="link" className={styles.imageContainer} />
+              </a> 
+            </div>
+
+            
         </div>
       </div>
       <div className={styles.underContainer}>
@@ -166,19 +203,26 @@ const GetMember = ({ setIsLoggedIn }) => {
           <h2 className={styles.subTitle}>학사정보</h2>
           <div className={styles.academicContext}>
             <div className={styles.leftContainer}>
-              <div>학과 : 소프트웨어</div>
+              <div  className={styles.textContainer1}>
+                <div className={styles.boldText}>학과</div>
+                <div>소프트웨어</div>
+              </div>
               <div>
                 {user ? (
-                  <div>학번: {user?.data?.stdnum}</div>
+                  <div className={styles.textContainer2}>
+                    <div className={styles.boldText}>학번</div>
+                    <div>{user?.data?.stdnum}</div>
+                  </div>
+                  
                 ) : (
                   <div>Loading...</div>
                 )}
               </div>
               <div>
                 {user ? (
-                  <div>
+                  <div className={styles.textleft2Container}>
                     이수학년/학기
-                    <select value={sem} onChange={onChange} name="sem">
+                    <select className={styles.marginLeft} value={sem} onChange={onChange} name="sem">
                       <option
                         value="1"
                         selected={user?.data?.completionsem === 1}
@@ -238,9 +282,9 @@ const GetMember = ({ setIsLoggedIn }) => {
               {" "}
               <div>
                 {user ? (
-                  <div>
+                  <div className={styles.textleft2Container}>
                     선호분야
-                    <select value={prefer} onChange={onChange} name="prefer">
+                    <select className={styles.marginLeft} value={prefer} onChange={onChange} name="prefer">
                       <option selected={user?.data?.prefer === "ai"} value="ai">
                         AI
                       </option>
@@ -267,10 +311,11 @@ const GetMember = ({ setIsLoggedIn }) => {
               </div>
               <div>
                 {user ? (
-                  <div>
+                  <div className={styles.textleftContainer}>
                     공개여부
                     {user?.data?.onoff}
                     <select
+                      className={styles.marginLeft}
                       value={isPublic}
                       onChange={onChange}
                       name="isPublic"
@@ -293,7 +338,7 @@ const GetMember = ({ setIsLoggedIn }) => {
                   <div>Loading...</div>
                 )}
               </div>
-              <button onClick={delBtn}>탈퇴하기</button>
+              <button onClick={delBtn} className={styles.delBtn}>탈퇴하기</button>
             </div>
           </div>
         </div>
