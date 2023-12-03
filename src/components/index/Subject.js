@@ -1,12 +1,16 @@
 import axios from "axios";
 import styles from "./Subject.module.css";
+import ai from "../../image/1.png";
+import cs from "../../image/3.png";
+import coding from "../../image/2.png";
+import teach from "../../image/4.png";
 import { useState, useEffect } from "react";
 
 const Subject = () => {
   const [grade, setGrade] = useState("");
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
-
+  const [subject, setSubject] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,10 +26,36 @@ const Subject = () => {
       } catch (error) {
         console.log(error);
       }
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:8080/member", {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response.data.data.subject);
+        setSubject(response.data.data.subject);
+        const bool = subject[0].includes(5118002);
+        console.log(isValueIn2DArray(5118001));
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();
   }, [grade, sem]);
+
+  function isValueIn2DArray(value) {
+    for (let i = 0; i < subject.length; i++) {
+      for (let j = 0; j < subject[i].length; j++) {
+        if (subject[i][j] === value) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -71,7 +101,16 @@ const Subject = () => {
             ? subjectData.map((item, index) => (
                 <li key={index}>
                   <p>
+                    <input
+                      checked={isValueIn2DArray(item.subnum)}
+                      className={styles.checkBox}
+                      type="checkbox"
+                    />
                     {item.category}-{item.subname}-{item.score}
+                    {item.ai && <img src={ai} alt="ai" />}
+                    {item.cs && <img src={cs} alt="cs" />}
+                    {item.coding && <img src={coding} alt="coding" />}
+                    {item.teach && <img src={teach} alt="teach" />}
                   </p>
                   {/* 여기에 필요한 다른 데이터 렌더링 */}
                 </li>
@@ -84,7 +123,16 @@ const Subject = () => {
                 .map((item, index) => (
                   <li key={index}>
                     <p>
-                      {item.category}-{item.subname}-{item.score}
+                      <input
+                        checked={isValueIn2DArray(item.subnum)}
+                        className={styles.checkBox}
+                        type="checkbox"
+                      />
+                      {item.category}-{item.subname}-{item.score}{" "}
+                      {item.ai && <img src={ai} alt="ai" />}
+                      {item.cs && <img src={cs} alt="cs" />}
+                      {item.coding && <img src={coding} alt="coding" />}
+                      {item.teach && <img src={teach} alt="teach" />}
                     </p>
                     {/* 여기에 필요한 다른 데이터 렌더링 */}
                   </li>
