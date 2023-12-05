@@ -98,7 +98,7 @@ const OtherProfile = () => {
             <div className={styles.textContainer}>
               <div className={styles.boldText}>학번</div>
               <div>{userData.stdnum}</div>
-              <div className={styles.boldText}>이수학년/학기</div>
+              <div className={styles.boldText}>이수 학년·학기</div>
               <div>{userData.completionsem}</div>
             </div>
             {/* 여기에 필요한 다른 데이터 렌더링 */}

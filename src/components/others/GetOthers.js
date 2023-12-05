@@ -42,8 +42,8 @@ const GetOthers = () => {
       <div className={styles.imageContainer}>
         {item.prefer === "ai" && <img src={ai} alt="ai" />}
         {item.prefer === "cs" && <img src={cs} alt="cs" />}
-        {item.prefer === "teach" && <img src={teach} alt="teach" />}
         {item.prefer === "coding" && <img src={coding} alt="coding" />}
+        {item.prefer === "teach" && <img src={teach} alt="teach" />}
       </div>
     );
   };
@@ -68,7 +68,7 @@ const GetOthers = () => {
       <div className={styles.mainContainer}>
       {getFilteredData().map((item, index) => (
           <Link to={`/other/${item.account}`}>
-            <div className={styles.userContainer} key={index}>
+            <div className={`${styles.userContainer} ${styles.userSize}`} key={index}>
               <div>{chkPre(item)}</div>
               <div className={styles.textContainer}>
                 <div className={styles.boldText}>학번</div>
