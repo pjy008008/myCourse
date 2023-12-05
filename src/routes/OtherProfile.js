@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styles from "./OtherProfile.module.css";
 import List from "../components/List";
 import ai from "../image/ai.png";
@@ -22,6 +22,10 @@ const chkPre = (item) => {
 const OtherProfile = () => {
   const params = useParams();
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
+  const otherClick = () => {
+    navigate("/other");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,9 +105,9 @@ const OtherProfile = () => {
           </div>
     ) : (
       <div>No user data available</div>
-    )} 
+    )}
     <button className={styles.storeBtn}>내 커리큘럼에 추가하기 </button>
-    <button className={styles.goBackBtn}>뒤로 가기</button>
+    <button onClick={otherClick} className={styles.goBackBtn}>뒤로 가기</button>
     </div>
   );
 };

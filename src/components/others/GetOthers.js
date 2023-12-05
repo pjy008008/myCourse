@@ -9,8 +9,11 @@ import { Link, useParams } from "react-router-dom";
 
 const GetOthers = () => {
   const [userData, setUserData] = useState([]);
+  const [selectedPrefer, setSelectedPrefer] = useState("all");
+
   const { userId } = useParams();
   console.log(userId);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +35,7 @@ const GetOthers = () => {
 
     fetchData();
   }, []);
+  
 
   const chkPre = (item) => {
     return (
@@ -43,10 +47,26 @@ const GetOthers = () => {
       </div>
     );
   };
+
+  const getFilteredData = () => {
+    if (selectedPrefer === "all") {
+      return userData;
+    } else {
+      return userData.filter((item) => item.prefer === selectedPrefer);
+    }
+  };
+
   return (
-    <div className={styles.mainContainer}>
-      {userData ? (
-        userData.map((item, index) => (
+    <div className={styles.allContainer}>
+      <div className={styles.btnContainer}>
+        <button className={styles.btnall} onClick={() => setSelectedPrefer("all")}>전체</button>
+        <button className={styles.btnai} onClick={() => setSelectedPrefer("ai")}>AI</button>
+        <button className={styles.btncs} onClick={() => setSelectedPrefer("cs")}>CS</button>
+        <button className={styles.btncoding} onClick={() => setSelectedPrefer("coding")}>개발</button>
+        <button className={styles.btnteach} onClick={() => setSelectedPrefer("teach")}>교직</button>
+      </div>
+      <div className={styles.mainContainer}>
+      {getFilteredData().map((item, index) => (
           <Link to={`/other/${item.account}`}>
             <div className={styles.userContainer} key={index}>
               <div>{chkPre(item)}</div>
@@ -59,10 +79,8 @@ const GetOthers = () => {
               {/* 여기에 필요한 다른 데이터 렌더링 */}
             </div>
           </Link>
-        ))
-      ) : (
-        <div>Loading...</div>
-      )}
+        ))}
+      </div>
     </div>
   );
 };

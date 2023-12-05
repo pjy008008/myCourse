@@ -30,14 +30,64 @@ a{
 }
 
 
+
+.btnContainer{
+    display: flex;
+    flex-direction: column; /* 수직으로 배치 */
+    align-items: flex-end; /* 오른쪽 정렬 */
+    margin-bottom: 20px;
+    position: absolute;
+    top: 200px;
+    right: 30px;
+}
+.btnall {
+    width: 80px; /* 원하는 너비 설정 */
+    height: 40px; /* 원하는 높이 설정 */
+    background-color: #1E2D4B; /* 원하는 배경 색상 설정 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 모양으로 설정 */
+    /* 기타 원하는 스타일 추가 */
+  }
+.btnai {
+    width: 80px; 
+    height: 40px; 
+    background-color: #E26A5E; 
+    border: none;
+    cursor: pointer; 
+  }
+.btncs {
+    width: 80px; 
+    height: 40px; 
+    background-color: #ECBD50; 
+    border: none;
+    cursor: pointer; 
+  }
+.btncoding {
+    width: 80px; 
+    height: 40px; 
+    background-color: #6DC356;
+    border: none;
+    cursor: pointer; 
+  }
+.btnteach {
+    width: 80px; 
+    height: 40px; 
+    background-color: #3498db; 
+    border: none;
+    cursor: pointer; 
+  }
+
 .mainContainer{
+    margin-top : 20px;
+    background-color: white;
+    top: 180px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+    grid-template-columns: repeat(auto-fill, minmax(30%, auto));
     margin-left: 50px;
     margin-right: 50px;
 }
 .userContainer{
-    background-color: white;
+    background-color: #E7E7E7;
     border-radius: 10px;
     height: 180px;
     margin: 20px;
