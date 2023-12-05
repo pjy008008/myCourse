@@ -131,7 +131,7 @@ const GetMember = ({ setIsLoggedIn }) => {
           <form onSubmit={onSubmit}>
             <div>
               {user ? (
-                <div className={styles.textContainer}>
+                <div className={styles.textContainer0}>
                   <div className={styles.boldText}>아이디</div>
                   <div>{user?.data?.account}</div>
                 </div>
@@ -178,26 +178,30 @@ const GetMember = ({ setIsLoggedIn }) => {
             <img src={cbnu} alt="CBNU Logo" className={`${styles.imageContainer} ${styles.cbnuLogo}`}  />
             <div className={styles.textContainer3}>
               <div className={styles.boldText}>개신누리</div>
-              <a href="https://eis.cbnu.ac.kr/cbnuLogin?1645100877" target="_blank" rel="noopener noreferrer">
-                <img src={link} alt="link" className={styles.imageContainer} />
+              <img src={link} alt="link" className={`${styles.imageContainer} ${styles.imglink}`} />
+              <a className={styles.link} href="https://eis.cbnu.ac.kr/cbnuLogin?1645100877" target="_blank" rel="noopener noreferrer">
+                <div>https://bit.ly/47NPhz7</div>
               </a> 
             </div>
             <div className={styles.textContainer3}>
               <div className={styles.boldText}>졸업과정 확인</div>
-              <a href="https://www.chungbuk.ac.kr/site/f09/boardList.do?boardSeq=636&key=1446&part=B00000" target="_blank" rel="noopener noreferrer">
-                <img src={link} alt="link" className={styles.imageContainer} />
+              <img src={link} alt="link" className={`${styles.imageContainer} ${styles.imglink}`} />
+              <a className={styles.link} href="https://www.chungbuk.ac.kr/site/f09/boardList.do?boardSeq=636&key=1446&part=B00000" target="_blank" rel="noopener noreferrer">
+                <div>https://bit.ly/49Whnda</div>
               </a>
             </div>
             <div className={styles.textContainer3}>
               <div className={styles.boldText}>학과 홈페이지</div>
-              <a href="https://software.cbnu.ac.kr/" target="_blank" rel="noopener noreferrer">
-                <img src={link} alt="link" className={styles.imageContainer} />
+              <img src={link} alt="link" className={`${styles.imageContainer} ${styles.imglink}`} />
+              <a className={styles.link} href="https://software.cbnu.ac.kr/" target="_blank" rel="noopener noreferrer">
+                <div>https://software.cbnu.ac.kr/</div>
               </a>
             </div>
             <div className={styles.textContainer3}>
               <div className={styles.boldText}>sw중심사업단</div>
-              <a href="https://sw7up.cbnu.ac.kr/home" target="_blank" rel="noopener noreferrer">
-                <img src={link} alt="link" className={styles.imageContainer} />
+              <img src={link} alt="link" className={`${styles.imageContainer} ${styles.imglink}`} />
+              <a className={styles.link} href="https://sw7up.cbnu.ac.kr/home" target="_blank" rel="noopener noreferrer">
+                    <div>https://sw7up.cbnu.ac.kr/home</div>
               </a> 
             </div>
 
@@ -227,7 +231,7 @@ const GetMember = ({ setIsLoggedIn }) => {
               <div>
                 {user ? (
                   <div className={styles.textleft2Container}>
-                    이수학년/학기
+                    이수 학년·학기
                     <select className={styles.marginLeft} value={sem} onChange={onChange} name="sem">
                       <option
                         value="1"
@@ -289,7 +293,7 @@ const GetMember = ({ setIsLoggedIn }) => {
               <div>
                 {user ? (
                   <div className={styles.textleft2Container}>
-                    선호분야
+                    선호 분야
                     <select className={styles.marginLeft} value={prefer} onChange={onChange} name="prefer">
                       <option selected={user?.data?.prefer === "ai"} value="ai">
                         AI
@@ -307,7 +311,7 @@ const GetMember = ({ setIsLoggedIn }) => {
                         selected={user?.data?.prefer === "teach"}
                         value="teach"
                       >
-                        교직 이수
+                        교직
                       </option>
                     </select>
                   </div>
@@ -318,7 +322,7 @@ const GetMember = ({ setIsLoggedIn }) => {
               <div>
                 {user ? (
                   <div className={styles.textleftContainer}>
-                    공개여부
+                    공개 여부
                     {user?.data?.onoff}
                     <select
                       className={styles.marginLeft}

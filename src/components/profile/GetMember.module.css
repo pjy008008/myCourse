@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
 }
+
+
 .cbnuLogo {
   margin-top: 10px;
   margin-left: 15px;
@@ -24,6 +26,16 @@
 .textContainer {
   display: grid;
   grid-template-columns: 123px 145px;
+  justify-items: center;
+  
+  margin-top: 20px;
+  margin-left: 17px;
+  margin-bottom: 13px;
+}
+
+.textContainer0 {
+  display: grid;
+  grid-template-columns: 123px 175px;
   justify-items: center;
   
   margin-top: 20px;
@@ -53,11 +65,21 @@
 
 .textContainer3 {
   display: grid;
-  grid-template-columns: 150px 10px;
-  justify-items: center;
+  grid-template-columns: 150px 30px 280px;
+  
+  text-align: left;
   margin-top: 20px;
-  margin-left: 17px;
+  margin-left: 45px;
+  margin-right: 0px;
   padding-bottom: 5px;
+}
+
+.imglink {
+  margin-left: 50px;
+}
+
+.link {
+  margin-left: 60px;
 }
 
 .textleft1Container {
@@ -145,6 +167,7 @@
   position: fixed;
   right: 210px;
   top: 0px;
+  
   background-color: white;
   color: #1e2d4b;
   font-size: 18px;
