@@ -4,6 +4,7 @@
   grid-template-columns: 350px 100px 150px;
   width: 600px;
   align-items: baseline;
+  margin-left: 110px;
 }
 .title{
   color: white;

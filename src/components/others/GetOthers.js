@@ -68,7 +68,7 @@ const GetOthers = () => {
       <div className={styles.mainContainer}>
       {getFilteredData().map((item, index) => (
           <Link to={`/other/${item.account}`}>
-            <div className={styles.userContainer} key={index}>
+            <div className={`${styles.userContainer} ${styles.userSize}`} key={index}>
               <div>{chkPre(item)}</div>
               <div className={styles.textContainer}>
                 <div className={styles.boldText}>학번</div>
