@@ -42,8 +42,8 @@ const GetOthers = () => {
       <div className={styles.imageContainer}>
         {item.prefer === "ai" && <img src={ai} alt="ai" />}
         {item.prefer === "cs" && <img src={cs} alt="cs" />}
-        {item.prefer === "teach" && <img src={teach} alt="teach" />}
         {item.prefer === "coding" && <img src={coding} alt="coding" />}
+        {item.prefer === "teach" && <img src={teach} alt="teach" />}
       </div>
     );
   };
