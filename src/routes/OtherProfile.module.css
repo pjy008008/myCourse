@@ -46,11 +46,11 @@ table {
     width: 90vw;
     height: 17vh;
     background-color: #112d4e;
-    border-radius: 40px; /* 조절 가능한 값 */
-    margin: auto; /* 가운데 정렬을 위해 추가 */
+    border-radius: 40px; 
+    margin: auto; 
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    /* align-items: center; 
     justify-content: center;
   } */
 
