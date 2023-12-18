@@ -32,10 +32,11 @@ const Home = () => {
       setSem(value);
     }
   };
-  const submitBtn = () => {};
+
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div>
       <div className={styles.mainContainer}>
@@ -141,9 +142,6 @@ const Home = () => {
             </table>
           </div>
           <div className={styles.choiceContainer}>
-            <button onClick={submitBtn} className={styles.submitBtn}>
-              My Course 저장
-            </button>
             <div className={styles.semSelect}>
               <select
                 id={styles.select}
@@ -162,7 +160,7 @@ const Home = () => {
                 <option value="8">4학년 2학기</option>
               </select>
             </div>
-            <Subject />
+            <Subject selectSem={sem} />
           </div>
         </div>
       </div>

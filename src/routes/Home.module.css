@@ -95,16 +95,3 @@ a {
   font-weight: bold;
 }
 
-.submitBtn { /*mycourse 저장*/
-  position: fixed;
-  top: 0px;
-  right: 60px;
-  background-color: white;
-  color: #1e2d4b;
-  font-size: 17px;
-  font-weight: bold;
-  width: 120px;
-  height: 70px;
-  border-radius: 0px 0px 15px 15px;
-  border: none;
-}

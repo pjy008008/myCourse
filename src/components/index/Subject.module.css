@@ -19,7 +19,7 @@
   grid-template-columns: 190px 190px;
   justify-items: center;
   padding-left: 15px;
-  overflow-y: hidden; 
+  overflow-y: hidden;
   /* 수직 스크롤 제거 */
 }
 .checkBox {
@@ -32,4 +32,18 @@
   border-radius: 5px;
   font-weight: bold;
   font-size: 15px;
+}
+.submitBtn {
+  /*mycourse 저장*/
+  position: fixed;
+  top: 0px;
+  right: 60px;
+  background-color: white;
+  color: #1e2d4b;
+  font-size: 17px;
+  font-weight: bold;
+  width: 120px;
+  height: 70px;
+  border-radius: 0px 0px 15px 15px;
+  border: none;
 }

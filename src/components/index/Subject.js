@@ -6,7 +6,7 @@ import coding from "../../image/2.png";
 import teach from "../../image/4.png";
 import { useState, useEffect } from "react";
 
-const Subject = () => {
+const Subject = ({ selectSem }) => {
   const [grade, setGrade] = useState("");
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
@@ -34,10 +34,7 @@ const Subject = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response.data.data.subject);
         setSubject(response.data.data.subject);
-        const bool = subject[0].includes(5118002);
-        console.log(isValueIn2DArray(5118001));
       } catch (error) {
         console.log(error);
       }
@@ -47,15 +44,33 @@ const Subject = () => {
   }, [grade, sem]);
 
   function isValueIn2DArray(value) {
-    for (let i = 0; i < subject.length; i++) {
-      for (let j = 0; j < subject[i].length; j++) {
-        if (subject[i][j] === value) {
-          return true;
-        }
-      }
-    }
-    return false;
+    // console.log(subject)
+    return subject.flat().includes(value);
   }
+
+  const handleCheckboxChange = (subnum) => {
+    // 현재 subject 상태를 복사하여 수정
+    const updatedSubject = [...subject];
+
+    // subnum이 이미 배열에 있는지 확인
+    const isAlreadyChecked = isValueIn2DArray(subnum);
+
+    // 이미 체크된 경우, 배열에서 제거
+    if (isAlreadyChecked) {
+      const rowIndex = updatedSubject.findIndex((row) => row.includes(subnum));
+      const columnIndex = updatedSubject[rowIndex].indexOf(subnum);
+      updatedSubject[rowIndex].splice(columnIndex, 1);
+    } else {
+      // 아직 체크되지 않은 경우, 배열에 추가
+      //selectSem이 0이라면 시간표 입력칸 선택하라는 문구 alert
+      //체크되지 않았을 때 특정 배열에 추가하는 코드 작성,(selectSem의 번호 에 -1한 배열에 저장)
+      updatedSubject.push([subnum]);
+    }
+
+    // 수정된 상태를 적용
+    setSubject(updatedSubject);
+    console.log(subject);
+  };
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -64,9 +79,33 @@ const Subject = () => {
     } else if (name === "sem") {
       setSem(value);
     }
-    console.log(subjectData);
   };
 
+  const onSubmit = async (event) => {
+    //code when submit instruction executed
+    window.location.href = "/";
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await axios.put(
+        "http://localhost:8080/member",
+        { subject },
+        {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        console.log("정보 수정 완료")
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.message);
+    }
+  };
   return (
     <div>
       <div className={styles.selectContainer}>
@@ -105,6 +144,7 @@ const Subject = () => {
                       checked={isValueIn2DArray(item.subnum)}
                       className={styles.checkBox}
                       type="checkbox"
+                      onChange={() => handleCheckboxChange(item.subnum)}
                     />
                     {item.category}-{item.subname}-{item.score}
                     {item.ai && <img src={ai} alt="ai" />}
@@ -127,6 +167,7 @@ const Subject = () => {
                         checked={isValueIn2DArray(item.subnum)}
                         className={styles.checkBox}
                         type="checkbox"
+                        onChange={() => handleCheckboxChange(item.subnum)}
                       />
                       {item.category}-{item.subname}-{item.score}{" "}
                       {item.ai && <img src={ai} alt="ai" />}
@@ -139,6 +180,9 @@ const Subject = () => {
                 ))}
         </ul>
       </div>
+      <button onClick={onSubmit} className={styles.submitBtn}>
+        My Course 저장
+      </button>
     </div>
   );
 };
