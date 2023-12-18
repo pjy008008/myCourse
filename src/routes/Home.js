@@ -9,6 +9,10 @@ const Home = () => {
   const [user, setUser] = useState({});
   const [sem, setSem] = useState(0);
   const [subject, setSubject] = useState([]);
+  const [subjectDB, setSubjectDB] = useState([]);
+  const [neccesarrySum, setNeccesarrySum] = useState(0);
+  const [optionalSum, setOptionalSum] = useState(0);
+  const [sum, setSum] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -25,6 +29,20 @@ const Home = () => {
     } catch (error) {
       console.log(error);
     }
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get("http://localhost:8080/subject", {
+        headers: {
+          Accept: "application/json;charset=UTF-8",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser((prev) => response);
+      setSubjectDB(response.data.data);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -34,9 +52,51 @@ const Home = () => {
     console.log(sem);
   };
 
+  const getSubjectName = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.subname : "";
+  };
+
+  const getSubjectScore = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.score : "";
+  };
+
+  const getSubjectCategory = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.category : "";
+  };
   useEffect(() => {
     fetchData();
   }, []);
+  useEffect(() => {
+    // subject 배열이 변경될 때마다 전필, 전선 합을 계산하여 상태를 업데이트
+    const newNeccesarrySum = subject
+      .flat()
+      .filter((subnum) => getSubjectCategory(subnum) === "전필")
+      .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
+
+    const newOptionalSum = subject
+      .flat()
+      .filter((subnum) => getSubjectCategory(subnum) === "전선")
+      .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
+
+    setNeccesarrySum(newNeccesarrySum);
+    setOptionalSum(newOptionalSum);
+    setSum(newNeccesarrySum + newOptionalSum);
+  }, [subject, getSubjectScore, getSubjectCategory]);
 
   return (
     <div>
@@ -44,6 +104,10 @@ const Home = () => {
         <List />
         <div className={styles.contentContainer}>
           <div className={styles.tableContainer}>
+            <div className={styles.sum}>
+              전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
+              {sum}
+            </div>
             <table className={styles.table}>
               <thead>
                 <tr>
@@ -60,7 +124,11 @@ const Home = () => {
                   <td className={sem === "1" ? styles.highlighted : ""}>
                     {subject.length > 0 && subject[0] ? (
                       subject[0].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -73,7 +141,11 @@ const Home = () => {
                   >
                     {subject.length > 1 && subject[1] ? (
                       subject[1].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -85,7 +157,11 @@ const Home = () => {
                   <td className={sem === "3" ? styles.highlighted : ""}>
                     {subject.length > 2 && subject[2] ? (
                       subject[2].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -98,7 +174,11 @@ const Home = () => {
                   >
                     {subject.length > 3 && subject[3] ? (
                       subject[3].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -110,7 +190,11 @@ const Home = () => {
                   <td className={sem === "5" ? styles.highlighted : ""}>
                     {subject.length > 4 && subject[4] ? (
                       subject[4].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -123,7 +207,11 @@ const Home = () => {
                   >
                     {subject.length > 5 && subject[5] ? (
                       subject[5].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -139,7 +227,11 @@ const Home = () => {
                   >
                     {subject.length > 6 && subject[6] ? (
                       subject[6].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -152,7 +244,11 @@ const Home = () => {
                   >
                     {subject.length > 7 && subject[7] ? (
                       subject[7].map((subject, i) => (
-                        <p key={i}>{`과목코드 : ${subject}`}</p>
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -181,7 +277,11 @@ const Home = () => {
                 <option value="8">4학년 2학기</option>
               </select>
             </div>
-            <Subject subject={subject} setSubject={setSubject} selectSem={sem} />
+            <Subject
+              subject={subject}
+              setSubject={setSubject}
+              selectSem={sem}
+            />
           </div>
         </div>
       </div>

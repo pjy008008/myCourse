@@ -133,7 +133,7 @@ const Subject = ({ subject, setSubject, selectSem }) => {
                       type="checkbox"
                       onChange={() => handleCheckboxChange(item.subnum)}
                     />
-                    {item.category}-{item.subname}-{item.score}
+                    {item.category}-{item.subname}-{item.score}{" "}
                     {item.ai && <img src={ai} alt="ai" />}
                     {item.cs && <img src={cs} alt="cs" />}
                     {item.coding && <img src={coding} alt="coding" />}
