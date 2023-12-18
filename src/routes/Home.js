@@ -31,6 +31,7 @@ const Home = () => {
     if (name === "sem") {
       setSem(value);
     }
+    console.log(sem);
   };
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const Home = () => {
               <tbody>
                 <tr>
                   <td className={styles.tableLeft}>1</td>
-                  <td>
+                  <td className={sem === "1" ? styles.highlighted : ""}>
                     {subject.length > 0 && subject[0] ? (
                       subject[0].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -65,7 +66,11 @@ const Home = () => {
                       <div></div>
                     )}
                   </td>
-                  <td className={styles.tableRight}>
+                  <td
+                    className={`${styles.tableRight} ${
+                      sem === "2" ? styles.highlighted : ""
+                    }`}
+                  >
                     {subject.length > 1 && subject[1] ? (
                       subject[1].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -77,7 +82,7 @@ const Home = () => {
                 </tr>
                 <tr>
                   <td className={styles.tableLeft}>2</td>
-                  <td>
+                  <td className={sem === "3" ? styles.highlighted : ""}>
                     {subject.length > 2 && subject[2] ? (
                       subject[2].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -86,7 +91,11 @@ const Home = () => {
                       <div></div>
                     )}
                   </td>
-                  <td className={styles.tableRight}>
+                  <td
+                    className={`${styles.tableRight} ${
+                      sem === "4" ? styles.highlighted : ""
+                    }`}
+                  >
                     {subject.length > 3 && subject[3] ? (
                       subject[3].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -98,7 +107,7 @@ const Home = () => {
                 </tr>
                 <tr>
                   <td className={styles.tableLeft}>3</td>
-                  <td>
+                  <td className={sem === "5" ? styles.highlighted : ""}>
                     {subject.length > 4 && subject[4] ? (
                       subject[4].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -107,7 +116,11 @@ const Home = () => {
                       <div></div>
                     )}
                   </td>
-                  <td className={styles.tableRight}>
+                  <td
+                    className={`${styles.tableRight} ${
+                      sem === "6" ? styles.highlighted : ""
+                    }`}
+                  >
                     {subject.length > 5 && subject[5] ? (
                       subject[5].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -119,7 +132,11 @@ const Home = () => {
                 </tr>
                 <tr>
                   <td className={`${styles.tableLeft} ${styles.bottom}`}>4</td>
-                  <td className={styles.bottom}>
+                  <td
+                    className={`${styles.bottom} ${
+                      sem === "7" ? styles.highlighted : ""
+                    }`}
+                  >
                     {subject.length > 6 && subject[6] ? (
                       subject[6].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -128,7 +145,11 @@ const Home = () => {
                       <div></div>
                     )}
                   </td>
-                  <td className={`${styles.tableRight} ${styles.bottom}`}>
+                  <td
+                    className={`${styles.tableRight} ${styles.bottom} ${
+                      sem === "8" ? styles.highlighted : ""
+                    }`}
+                  >
                     {subject.length > 7 && subject[7] ? (
                       subject[7].map((subject, i) => (
                         <p key={i}>{`과목코드 : ${subject}`}</p>
@@ -160,7 +181,7 @@ const Home = () => {
                 <option value="8">4학년 2학기</option>
               </select>
             </div>
-            <Subject selectSem={sem} />
+            <Subject subject={subject} setSubject={setSubject} selectSem={sem} />
           </div>
         </div>
       </div>

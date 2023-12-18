@@ -26,6 +26,7 @@ const GetOthers = () => {
           }
         );
         setUserData(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -82,10 +83,15 @@ const GetOthers = () => {
 
   const getFilteredData = () => {
     if (selectedPrefer === "all") {
-      return userData.filter((item) => item.account !== userId);
+      return userData.filter(
+        (item) => item.account !== userId && item.onoff === true
+      );
     } else {
       return userData.filter(
-        (item) => item.prefer === selectedPrefer && item.account !== userId
+        (item) =>
+          item.prefer === selectedPrefer &&
+          item.account !== userId &&
+          item.onoff === true
       );
     }
   };

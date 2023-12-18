@@ -6,11 +6,11 @@ import coding from "../../image/2.png";
 import teach from "../../image/4.png";
 import { useState, useEffect } from "react";
 
-const Subject = ({ selectSem }) => {
+const Subject = ({ subject, setSubject, selectSem }) => {
   const [grade, setGrade] = useState("");
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
-  const [subject, setSubject] = useState([]);
+  // const [subject, setSubject] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,18 +23,6 @@ const Subject = ({ selectSem }) => {
         });
         setSubjectData(response.data.data);
         console.log(subjectData);
-      } catch (error) {
-        console.log(error);
-      }
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/member", {
-          headers: {
-            Accept: "application/json;charset=UTF-8",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setSubject(response.data.data.subject);
       } catch (error) {
         console.log(error);
       }

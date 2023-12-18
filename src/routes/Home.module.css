@@ -94,4 +94,6 @@ a {
   border-radius: 10px;
   font-weight: bold;
 }
-
+.highlighted{
+  background-color: #DBE2EF;
+}
