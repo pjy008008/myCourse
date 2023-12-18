@@ -22,6 +22,7 @@ const chkPre = (item) => {
 const OtherProfile = () => {
   const params = useParams();
   const [userData, setUserData] = useState(null);
+  const [subjectDB, setSubjectDB] = useState([]);
   const navigate = useNavigate();
   const otherClick = () => {
     navigate("/other");
@@ -70,10 +71,24 @@ const OtherProfile = () => {
       } catch (error) {
         console.log(error);
       }
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:8080/subject", {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setSubjectDB(response.data.data);
+        console.log(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();
   }, [params.id]);
+
   const handleChangeSubject = async (event) => {
     // window.location.href = "/";
     const token = localStorage.getItem("token");
@@ -98,6 +113,34 @@ const OtherProfile = () => {
       alert(error.response.data.message);
     }
   };
+
+  const getSubjectName = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.subname : "";
+  };
+
+  const getSubjectScore = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.score : "";
+  };
+
+  const getSubjectCategory = (subnum) => {
+    // subjectDB 배열을 반복하면서 subnum과 일치하는 객체를 찾음
+    const matchingSubject = subjectDB.find(
+      (subject) => subject.subnum === subnum
+    );
+    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
+    return matchingSubject ? matchingSubject.category : "";
+  };
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
@@ -121,8 +164,12 @@ const OtherProfile = () => {
                   <td className={styles.tableLeft}>{row / 2 + 1}</td>
                   {[0, 1].map((col) => (
                     <td key={col}>
-                      {userData.subject[row + col].map((subjectCode, i) => (
-                        <p key={i}>{`과목: ${subjectCode}`}</p>
+                      {userData.subject[row + col].map((subject, i) => (
+                        <p key={i}>{`${getSubjectCategory(
+                          subject
+                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                          subject
+                        )}`}</p>
                       ))}
                     </td>
                   ))}
