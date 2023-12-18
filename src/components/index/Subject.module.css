@@ -6,6 +6,7 @@
   text-align: left;
   height: 83vh;
   overflow-y: auto; /* 수직 스크롤 활성화 */
+  margin-top: 0px;
 }
 .subjectList::-webkit-scrollbar {
   width: 17px;
@@ -45,5 +46,16 @@
   width: 120px;
   height: 70px;
   border-radius: 0px 0px 15px 15px;
+  border: none;
+}
+.categoryButtons{
+  width: 450px;
+  vertical-align: middle;
+}
+.categoryBtn{
+  line-height: 1.5; /* Adjust the value to your preference */
+  vertical-align: middle;
+  width: 80px;
+  height: 30px;
   border: none;
 }

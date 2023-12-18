@@ -10,6 +10,12 @@ const Subject = ({ subject, setSubject, selectSem }) => {
   const [grade, setGrade] = useState("");
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState({
+    ai: true,
+    cs: true,
+    coding: true,
+    teach: true,
+  });
   // const [subject, setSubject] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +63,50 @@ const Subject = ({ subject, setSubject, selectSem }) => {
     // 수정된 상태를 적용
     setSubject(updatedSubject);
     console.log(subject);
+  };
+
+  function filterSubjectData() {
+    return subjectData.filter((item) => {
+      const meetsGradeAndSemConditions =
+        (grade === "" || item.grade === parseInt(grade)) &&
+        (sem === "" || item.sem === parseInt(sem));
+
+      const meetsCategoryConditions =
+        (selectedCategories.ai && item.ai) ||
+        (selectedCategories.cs && item.cs) ||
+        (selectedCategories.coding && item.coding) ||
+        (selectedCategories.teach && item.teach);
+
+      return meetsGradeAndSemConditions && meetsCategoryConditions;
+    });
+  }
+  const toggleCategory = (category) => {
+    setSelectedCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
+
+  const toggleAllCategories = () => {
+    const allCategoriesAreSelected = Object.values(selectedCategories).every(
+      (value) => value === true
+    );
+
+    if (allCategoriesAreSelected) {
+      setSelectedCategories({
+        ai: false,
+        cs: false,
+        coding: false,
+        teach: false,
+      });
+    } else {
+      setSelectedCategories({
+        ai: true,
+        cs: true,
+        coding: true,
+        teach: true,
+      });
+    }
   };
 
   const onChange = (event) => {
@@ -122,49 +172,78 @@ const Subject = ({ subject, setSubject, selectSem }) => {
         </select>
       </div>
       <div>
+        <div className={styles.categoryButtons}>
+          <button className={styles.categoryBtn} onClick={toggleAllCategories}>
+            전체
+          </button>
+          <button
+            className={styles.categoryBtn}
+            onClick={() => toggleCategory("ai")}
+            style={{
+              backgroundColor: selectedCategories.ai ? "#cc5448" : "#e26a5e",
+              "box-shadow": selectedCategories.ai ? "0 0 10px rgba(0, 0, 0, 0.3)" : "",
+            }}
+          >
+            AI
+          </button>
+          <button
+            className={styles.categoryBtn}
+            onClick={() => toggleCategory("cs")}
+            style={{
+              backgroundColor: selectedCategories.cs ? "#d6a638" : "#ecbd50",
+              "box-shadow": selectedCategories.cs ? "0 0 10px rgba(0, 0, 0, 0.3)" : "",
+            }}
+          >
+            CS
+          </button>
+          <button
+            className={styles.categoryBtn}
+            onClick={() => toggleCategory("coding")}
+            style={{
+              backgroundColor: selectedCategories.coding
+                ? "#53ac3c"
+                : "#6dc356",
+              "box-shadow": selectedCategories.coding
+                ? "0 0 10px rgba(0, 0, 0, 0.3)"
+                : "",
+            }}
+          >
+            개발
+          </button>
+          <button
+            className={styles.categoryBtn}
+            onClick={() => toggleCategory("teach")}
+            style={{
+              backgroundColor: selectedCategories.teach ? "#395690" : "#536fa7",
+              "box-shadow": selectedCategories.teach
+                ? "0 0 10px rgba(0, 0, 0, 0.3)"
+                : "",
+            }}
+          >
+            교직
+          </button>
+        </div>
+      </div>
+      <div>
         <ul className={styles.subjectList}>
-          {grade === "" && sem === ""
-            ? subjectData.map((item, index) => (
-                <li key={index}>
-                  <p>
-                    <input
-                      checked={isValueIn2DArray(item.subnum)}
-                      className={styles.checkBox}
-                      type="checkbox"
-                      onChange={() => handleCheckboxChange(item.subnum)}
-                    />
-                    {item.category}-{item.subname}-{item.score}{" "}
-                    {item.ai && <img src={ai} alt="ai" />}
-                    {item.cs && <img src={cs} alt="cs" />}
-                    {item.coding && <img src={coding} alt="coding" />}
-                    {item.teach && <img src={teach} alt="teach" />}
-                  </p>
-                  {/* 여기에 필요한 다른 데이터 렌더링 */}
-                </li>
-              ))
-            : subjectData
-                .filter(
-                  (item) =>
-                    item.grade === parseInt(grade) && item.sem === parseInt(sem)
-                )
-                .map((item, index) => (
-                  <li key={index}>
-                    <p>
-                      <input
-                        checked={isValueIn2DArray(item.subnum)}
-                        className={styles.checkBox}
-                        type="checkbox"
-                        onChange={() => handleCheckboxChange(item.subnum)}
-                      />
-                      {item.category}-{item.subname}-{item.score}{" "}
-                      {item.ai && <img src={ai} alt="ai" />}
-                      {item.cs && <img src={cs} alt="cs" />}
-                      {item.coding && <img src={coding} alt="coding" />}
-                      {item.teach && <img src={teach} alt="teach" />}
-                    </p>
-                    {/* 여기에 필요한 다른 데이터 렌더링 */}
-                  </li>
-                ))}
+          {filterSubjectData().map((item, index) => (
+            <li key={index}>
+              <p>
+                <input
+                  checked={isValueIn2DArray(item.subnum)}
+                  className={styles.checkBox}
+                  type="checkbox"
+                  onChange={() => handleCheckboxChange(item.subnum)}
+                />
+                {item.category}-{item.subname}-{item.score}{" "}
+                {item.ai && <img src={ai} alt="ai" />}
+                {item.cs && <img src={cs} alt="cs" />}
+                {item.coding && <img src={coding} alt="coding" />}
+                {item.teach && <img src={teach} alt="teach" />}
+              </p>
+              {/* 여기에 필요한 다른 데이터 렌더링 */}
+            </li>
+          ))}
         </ul>
       </div>
       <button onClick={onSubmit} className={styles.submitBtn}>
