@@ -1,111 +1,111 @@
 /* styles.css */
-a{
-    color: black;
-    text-decoration: none;
+a {
+  color: black;
+  text-decoration: none;
 }
 .imageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-  /* 또는 필요에 따라 이미지와 텍스트 간격을 조절할 수 있습니다. */
+/* 또는 필요에 따라 이미지와 텍스트 간격을 조절할 수 있습니다. */
 .imageContainer img {
-    margin-top: 40px;
-    margin-left: 10px;
-    margin-right: 10px; /* 이미지 오른쪽 간격 조절 */
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px; /* 이미지 오른쪽 간격 조절 */
 }
 
 .textContainer {
-    display: grid;
-    grid-template-columns: 120px 100px;
-    justify-items: center;
-    padding-left: 1px;
-    margin-top: 40px;
-    margin-right: 50px;
+  display: grid;
+  grid-template-columns: 120px 100px;
+  justify-items: center;
+  padding-left: 1px;
+  margin-top: 40px;
+  margin-right: 50px;
 }
 
 .boldText {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-
-
-.btnContainer{
-    display: flex;
-    flex-direction: column; /* 수직으로 배치 */
-    align-items: flex-end; /* 오른쪽 정렬 */
-    margin-bottom: 20px;
-    position: absolute;
-    top: 200px;
-    right: 75px;
+.btnContainer {
+  display: flex;
+  flex-direction: column; /* 수직으로 배치 */
+  align-items: flex-end; /* 오른쪽 정렬 */
+  margin-bottom: 20px;
+  position: absolute;
+  top: 200px;
+  right: 75px;
 }
 .btnall {
-    width: 75px; /* 원하는 너비 설정 */
-    height: 50px; /* 원하는 높이 설정 */
-    background-color: #1E2D4B; /* 원하는 배경 색상 설정 */
-    border: none; /* 테두리 제거 */
-    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 모양으로 설정 */
-    /* 기타 원하는 스타일 추가 */
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border-radius: 0px 10px 10px 0px;
-    color: white;
-    font-weight: semi-bold;
-    font-size: 13pt;
-  }
-  .btnai, .btncs, .btncoding, .btnteach {
-    width: 75px; 
-    height: 50px; 
-    border: none;
-    cursor: pointer; 
-    margin-top: 0px;
-    margin-bottom: 0px;
-    border-radius: 0px 10px 10px 0px;
-    color: white;
-    font-weight: semi-bold;
-    font-size: 13pt;
+  width: 75px; /* 원하는 너비 설정 */
+  height: 50px; /* 원하는 높이 설정 */
+  background-color: #1e2d4b; /* 원하는 배경 색상 설정 */
+  border: none; /* 테두리 제거 */
+  cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능한 모양으로 설정 */
+  /* 기타 원하는 스타일 추가 */
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px 10px 10px 0px;
+  color: white;
+  font-weight: semi-bold;
+  font-size: 13pt;
+}
+.btnai,
+.btncs,
+.btncoding,
+.btnteach {
+  width: 75px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px 10px 10px 0px;
+  color: white;
+  font-weight: semi-bold;
+  font-size: 13pt;
 }
 
 .btnai {
-    background-color: #E26A5E; 
+  background-color: #e26a5e;
 }
 
 .btncs {
-    background-color: #ECBD50; 
+  background-color: #ecbd50;
 }
 
 .btncoding {
-    background-color: #6DC356;
+  background-color: #6dc356;
 }
 
 .btnteach {
-    background-color: #536FA7; 
+  background-color: #536fa7;
 }
 
+.mainContainer {
+  margin-top: 20px;
+  height: 610px;
+  width: 1405px;
+  background-color: white;
+  top: 180px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+  grid-template-rows: repeat(auto-fill, minmax(30%, auto));
+  margin-left: 150px;
 
-.mainContainer{
-    margin-top : 20px;
-    height: 610px;
-    width: 1405px;
-    background-color: white;
-    top: 180px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, auto));
-    grid-template-rows: repeat(auto-fill, minmax(30%, auto));
-    margin-left: 150px;
-
-    overflow: scroll;
-    overflow-x: hidden;
-    border-radius: 10px 0px 10px 00px;
-    grid-gap: 30px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-radius: 10px 0px 10px 00px;
+  grid-gap: 30px;
 }
-.userContainer{
-    background-color: #E7E7E7;
-    border-radius: 10px;
-    height: 180px;
-    margin: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 100px;
+.userContainer {
+  background-color: #e7e7e7;
+  border-radius: 10px;
+  height: 180px;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 100px;
 }

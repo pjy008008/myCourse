@@ -27,6 +27,26 @@ const OtherProfile = () => {
     navigate("/other");
   };
 
+  const handleSem = (sem) => {
+    if (sem === 1) {
+      return "1학년 1학기";
+    } else if (sem === 2) {
+      return "1학년 2학기";
+    } else if (sem === 3) {
+      return "2학년 1학기";
+    } else if (sem === 4) {
+      return "2학년 2학기";
+    } else if (sem === 5) {
+      return "3학년 1학기";
+    } else if (sem === 6) {
+      return "3학년 2학기";
+    } else if (sem === 7) {
+      return "4학년 1학기";
+    } else if (sem === 8) {
+      return "4학년 2학기";
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,6 +66,7 @@ const OtherProfile = () => {
         );
         setUserData(userWithMatchingAccount);
         console.log(userData);
+        console.log(userData.subject);
       } catch (error) {
         console.log(error);
       }
@@ -53,7 +74,30 @@ const OtherProfile = () => {
 
     fetchData();
   }, [params.id]);
+  const handleChangeSubject = async (event) => {
+    // window.location.href = "/";
+    const token = localStorage.getItem("token");
 
+    try {
+      const response = await axios.put(
+        "http://localhost:8080/member",
+        { subject: userData.subject },
+        {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        alert("변경완료");
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.message);
+    }
+  };
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
@@ -68,9 +112,7 @@ const OtherProfile = () => {
               <tr>
                 <th className={`${styles.tableLeft} ${styles.top}`}></th>
                 <th className={styles.top}>1학기</th>
-                <th className={`${styles.tableRight} ${styles.top}`}>
-                  2학기
-                </th>
+                <th className={`${styles.tableRight} ${styles.top}`}>2학기</th>
               </tr>
             </thead>
             <tbody>
@@ -93,21 +135,25 @@ const OtherProfile = () => {
         <div>Loading...</div>
       )}
       {userData ? (
-          <div className={styles.userContainer}>
-            <div>{chkPre(userData)}</div>
-            <div className={styles.textContainer}>
-              <div className={styles.boldText}>학번</div>
-              <div>{userData.stdnum}</div>
-              <div className={styles.boldText}>이수 학년·학기</div>
-              <div>{userData.completionsem}</div>
-            </div>
-            {/* 여기에 필요한 다른 데이터 렌더링 */}
+        <div className={styles.userContainer}>
+          <div>{chkPre(userData)}</div>
+          <div className={styles.textContainer}>
+            <div className={styles.boldText}>학번</div>
+            <div>{userData.stdnum}</div>
+            <div className={styles.boldText}>이수 학년·학기</div>
+            <div>{handleSem(userData.completionsem)}</div>
           </div>
-    ) : (
-      <div>No user data available</div>
-    )}
-    <button className={styles.storeBtn}>내 커리큘럼에 추가하기 </button>
-    <button onClick={otherClick} className={styles.goBackBtn}>뒤로 가기</button>
+          {/* 여기에 필요한 다른 데이터 렌더링 */}
+        </div>
+      ) : (
+        <div>No user data available</div>
+      )}
+      <button onClick={handleChangeSubject} className={styles.storeBtn}>
+        내 커리큘럼에 추가하기{" "}
+      </button>
+      <button onClick={otherClick} className={styles.goBackBtn}>
+        뒤로 가기
+      </button>
     </div>
   );
 };

@@ -60,11 +60,10 @@ const Subject = ({ selectSem }) => {
       const rowIndex = updatedSubject.findIndex((row) => row.includes(subnum));
       const columnIndex = updatedSubject[rowIndex].indexOf(subnum);
       updatedSubject[rowIndex].splice(columnIndex, 1);
+    } else if (selectSem === 0) {
+      alert("학기를 선택해주세요");
     } else {
-      // 아직 체크되지 않은 경우, 배열에 추가
-      //selectSem이 0이라면 시간표 입력칸 선택하라는 문구 alert
-      //체크되지 않았을 때 특정 배열에 추가하는 코드 작성,(selectSem의 번호 에 -1한 배열에 저장)
-      updatedSubject.push([subnum]);
+      updatedSubject[selectSem - 1].push(subnum);
     }
 
     // 수정된 상태를 적용
@@ -99,7 +98,7 @@ const Subject = ({ selectSem }) => {
       );
       console.log(response);
       if (response.status === 200) {
-        console.log("정보 수정 완료")
+        console.log("정보 수정 완료");
       }
     } catch (error) {
       console.log(error);

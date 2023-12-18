@@ -9,10 +9,8 @@ import { Link, useParams } from "react-router-dom";
 
 const GetOthers = () => {
   const [userData, setUserData] = useState([]);
+  const [userId, setUserId] = useState("");
   const [selectedPrefer, setSelectedPrefer] = useState("all");
-
-  const { userId } = useParams();
-  console.log(userId);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,10 +30,44 @@ const GetOthers = () => {
         console.log(error);
       }
     };
+    const getId = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:8080/member", {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUserId(response.data.data.account);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     fetchData();
+    getId();
   }, []);
-  
+
+  const handleSem = (sem) => {
+    if (sem === 1) {
+      return "1학년 1학기";
+    } else if (sem === 2) {
+      return "1학년 2학기";
+    } else if (sem === 3) {
+      return "2학년 1학기";
+    } else if (sem === 4) {
+      return "2학년 2학기";
+    } else if (sem === 5) {
+      return "3학년 1학기";
+    } else if (sem === 6) {
+      return "3학년 2학기";
+    } else if (sem === 7) {
+      return "4학년 1학기";
+    } else if (sem === 8) {
+      return "4학년 2학기";
+    }
+  };
 
   const chkPre = (item) => {
     return (
@@ -50,31 +82,58 @@ const GetOthers = () => {
 
   const getFilteredData = () => {
     if (selectedPrefer === "all") {
-      return userData;
+      return userData.filter((item) => item.account !== userId);
     } else {
-      return userData.filter((item) => item.prefer === selectedPrefer);
+      return userData.filter(
+        (item) => item.prefer === selectedPrefer && item.account !== userId
+      );
     }
   };
 
   return (
     <div className={styles.allContainer}>
       <div className={styles.btnContainer}>
-        <button className={styles.btnall} onClick={() => setSelectedPrefer("all")}>전체</button>
-        <button className={styles.btnai} onClick={() => setSelectedPrefer("ai")}>AI</button>
-        <button className={styles.btncs} onClick={() => setSelectedPrefer("cs")}>CS</button>
-        <button className={styles.btncoding} onClick={() => setSelectedPrefer("coding")}>개발</button>
-        <button className={styles.btnteach} onClick={() => setSelectedPrefer("teach")}>교직</button>
+        <button
+          className={styles.btnall}
+          onClick={() => setSelectedPrefer("all")}
+        >
+          전체
+        </button>
+        <button
+          className={styles.btnai}
+          onClick={() => setSelectedPrefer("ai")}
+        >
+          AI
+        </button>
+        <button
+          className={styles.btncs}
+          onClick={() => setSelectedPrefer("cs")}
+        >
+          CS
+        </button>
+        <button
+          className={styles.btncoding}
+          onClick={() => setSelectedPrefer("coding")}
+        >
+          개발
+        </button>
+        <button
+          className={styles.btnteach}
+          onClick={() => setSelectedPrefer("teach")}
+        >
+          교직
+        </button>
       </div>
       <div className={styles.mainContainer}>
-      {getFilteredData().map((item, index) => (
-          <Link to={`/other/${item.account}`}>
-            <div className={`${styles.userContainer} ${styles.userSize}`} key={index}>
+        {getFilteredData().map((item, index) => (
+          <Link to={`/other/${item.account}`} key={index}>
+            <div className={`${styles.userContainer} ${styles.userSize}`}>
               <div>{chkPre(item)}</div>
               <div className={styles.textContainer}>
                 <div className={styles.boldText}>학번</div>
                 <div>{item.stdnum}</div>
                 <div className={styles.boldText}>이수 학년·학기</div>
-                <div>{item.completionsem}</div>
+                <div>{handleSem(item.completionsem)}</div>
               </div>
               {/* 여기에 필요한 다른 데이터 렌더링 */}
             </div>
