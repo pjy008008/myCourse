@@ -121,7 +121,10 @@ const Home = () => {
               <tbody>
                 <tr>
                   <td className={styles.tableLeft}>1</td>
-                  <td className={sem === "1" ? styles.highlighted : ""}>
+                  <td
+                    onClick={() => setSem("1")}
+                    className={sem === "1" ? styles.highlighted : ""}
+                  >
                     {subject.length > 0 && subject[0] ? (
                       subject[0].map((subject, i) => (
                         <p key={i}>{`${getSubjectCategory(
@@ -135,6 +138,7 @@ const Home = () => {
                     )}
                   </td>
                   <td
+                    onClick={() => setSem("2")}
                     className={`${styles.tableRight} ${
                       sem === "2" ? styles.highlighted : ""
                     }`}
@@ -154,7 +158,10 @@ const Home = () => {
                 </tr>
                 <tr>
                   <td className={styles.tableLeft}>2</td>
-                  <td className={sem === "3" ? styles.highlighted : ""}>
+                  <td
+                    onClick={() => setSem("3")}
+                    className={sem === "3" ? styles.highlighted : ""}
+                  >
                     {subject.length > 2 && subject[2] ? (
                       subject[2].map((subject, i) => (
                         <p key={i}>{`${getSubjectCategory(
@@ -168,6 +175,7 @@ const Home = () => {
                     )}
                   </td>
                   <td
+                    onClick={() => setSem("4")}
                     className={`${styles.tableRight} ${
                       sem === "4" ? styles.highlighted : ""
                     }`}
@@ -187,7 +195,10 @@ const Home = () => {
                 </tr>
                 <tr>
                   <td className={styles.tableLeft}>3</td>
-                  <td className={sem === "5" ? styles.highlighted : ""}>
+                  <td
+                    onClick={() => setSem("5")}
+                    className={sem === "5" ? styles.highlighted : ""}
+                  >
                     {subject.length > 4 && subject[4] ? (
                       subject[4].map((subject, i) => (
                         <p key={i}>{`${getSubjectCategory(
@@ -201,6 +212,7 @@ const Home = () => {
                     )}
                   </td>
                   <td
+                    onClick={() => setSem("6")}
                     className={`${styles.tableRight} ${
                       sem === "6" ? styles.highlighted : ""
                     }`}
@@ -221,6 +233,7 @@ const Home = () => {
                 <tr>
                   <td className={`${styles.tableLeft} ${styles.bottom}`}>4</td>
                   <td
+                    onClick={() => setSem("7")}
                     className={`${styles.bottom} ${
                       sem === "7" ? styles.highlighted : ""
                     }`}
@@ -238,6 +251,7 @@ const Home = () => {
                     )}
                   </td>
                   <td
+                    onClick={() => setSem("8")}
                     className={`${styles.tableRight} ${styles.bottom} ${
                       sem === "8" ? styles.highlighted : ""
                     }`}
