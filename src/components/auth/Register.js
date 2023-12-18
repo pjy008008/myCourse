@@ -117,7 +117,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
               <option value="ai">AI</option>
               <option value="cs">컴퓨터 시스템</option>
               <option value="coding">개발</option>
-              <option value="teach">교직 이수</option>
+              <option value="teach">교직</option>
             </select>
             <br />
             <select required value={studentId} onChange={onChange} name="studentId">
@@ -136,7 +136,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
               onChange={onChange}
               name="completionsem"
             >
-              <option value="" disabled hidden>이수 학년/학기</option>
+              <option value="" disabled hidden>이수 학년·학기</option>
               <option value="1">1학년 1학기</option>
               <option value="2">1학년 2학기</option>
               <option value="3">2학년 1학기</option>

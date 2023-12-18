@@ -2,10 +2,11 @@
   font-size: 17px;
   font-weight: bold;
   list-style-type: none;
-  padding-left: 50px;
+  padding-left: 15px;
   text-align: left;
   height: 83vh;
   overflow-y: auto; /* 수직 스크롤 활성화 */
+  margin-top: 0px;
 }
 .subjectList::-webkit-scrollbar {
   width: 17px;
@@ -19,7 +20,7 @@
   grid-template-columns: 190px 190px;
   justify-items: center;
   padding-left: 15px;
-  overflow-y: hidden; 
+  overflow-y: hidden;
   /* 수직 스크롤 제거 */
 }
 .checkBox {
@@ -32,4 +33,29 @@
   border-radius: 5px;
   font-weight: bold;
   font-size: 15px;
+}
+.submitBtn {
+  /*mycourse 저장*/
+  position: fixed;
+  top: 0px;
+  right: 60px;
+  background-color: white;
+  color: #1e2d4b;
+  font-size: 17px;
+  font-weight: bold;
+  width: 120px;
+  height: 70px;
+  border-radius: 0px 0px 15px 15px;
+  border: none;
+}
+.categoryButtons{
+  width: 450px;
+  vertical-align: middle;
+}
+.categoryBtn{
+  line-height: 1.5; /* Adjust the value to your preference */
+  vertical-align: middle;
+  width: 80px;
+  height: 30px;
+  border: none;
 }
