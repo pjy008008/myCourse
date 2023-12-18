@@ -23,6 +23,10 @@ const OtherProfile = () => {
   const params = useParams();
   const [userData, setUserData] = useState(null);
   const [subjectDB, setSubjectDB] = useState([]);
+  const [neccesarrySum, setNeccesarrySum] = useState(0);
+  const [optionalSum, setOptionalSum] = useState(0);
+  const [sum, setSum] = useState(0);
+
   const navigate = useNavigate();
   const otherClick = () => {
     navigate("/other");
@@ -47,47 +51,6 @@ const OtherProfile = () => {
       return "4학년 2학기";
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "http://localhost:8080/member/everyone",
-          {
-            headers: {
-              Accept: "application/json;charset=UTF-8",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const userWithMatchingAccount = response.data.data.find(
-          (user) => user.account === params.id
-        );
-        setUserData(userWithMatchingAccount);
-        console.log(userData);
-        console.log(userData.subject);
-      } catch (error) {
-        console.log(error);
-      }
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/subject", {
-          headers: {
-            Accept: "application/json;charset=UTF-8",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setSubjectDB(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, [params.id]);
 
   const handleChangeSubject = async (event) => {
     // window.location.href = "/";
@@ -141,6 +104,58 @@ const OtherProfile = () => {
     return matchingSubject ? matchingSubject.category : "";
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          "http://localhost:8080/member/everyone",
+          {
+            headers: {
+              Accept: "application/json;charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const userWithMatchingAccount = response.data.data.find(
+          (user) => user.account === params.id
+        );
+        setUserData(userWithMatchingAccount);
+        const newNeccesarrySum = userData.subject
+          .flat()
+          .filter((subnum) => getSubjectCategory(subnum) === "전필")
+          .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
+
+        const newOptionalSum = userData.subject
+          .flat()
+          .filter((subnum) => getSubjectCategory(subnum) === "전선")
+          .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
+
+        setNeccesarrySum(newNeccesarrySum);
+        setOptionalSum(newOptionalSum);
+        setSum(newNeccesarrySum + newOptionalSum);
+      } catch (error) {
+        console.log(error);
+      }
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:8080/subject", {
+          headers: {
+            Accept: "application/json;charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setSubjectDB(response.data.data);
+        console.log(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
@@ -189,14 +204,17 @@ const OtherProfile = () => {
             <div>{userData.stdnum}</div>
             <div className={styles.boldText}>이수 학년·학기</div>
             <div>{handleSem(userData.completionsem)}</div>
+            {/* <div>
+              전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
+              {sum}
+            </div> */}
           </div>
-          {/* 여기에 필요한 다른 데이터 렌더링 */}
         </div>
       ) : (
         <div>No user data available</div>
       )}
       <button onClick={handleChangeSubject} className={styles.storeBtn}>
-        내 커리큘럼에 추가하기{" "}
+        커리큘럼 가져오기{" "}
       </button>
       <button onClick={otherClick} className={styles.goBackBtn}>
         뒤로 가기
