@@ -82,15 +82,17 @@ const Home = () => {
     const matchingSubject = subjectDB.find(
       (subject) => subject.subnum === subnum
     );
-    if(matchingSubject.category==="0"){
-      return "전선"
-    }else if(matchingSubject.category==="1"){
-      return "전필"
-    }else if(matchingSubject.category==="2"){
-      return "일선"
+    if (matchingSubject) {
+      if (matchingSubject.category === "0") {
+        return "전선";
+      } else if (matchingSubject.category === "1") {
+        return "전필";
+      } else if (matchingSubject.category === "2") {
+        return "일선";
+      }
+    } else {
+      return "";
     }
-    // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
-    return matchingSubject ? matchingSubject.category : "";
   };
   useEffect(() => {
     fetchData();
