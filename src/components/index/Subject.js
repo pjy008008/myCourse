@@ -184,33 +184,52 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
       </div>
       <div>
         <div className={styles.categoryButtons}>
-          <button className={styles.categoryBtn} onClick={toggleAllCategories}>
+          <button
+            className={styles.categoryBtn}
+            onClick={toggleAllCategories}
+            style={{
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+            }}
+          >
             전체
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("ai")}
             style={{
               backgroundColor: selectedCategories.ai ? "#cc5448" : "#e26a5e",
-              "box-shadow": selectedCategories.ai
+              boxShadow: selectedCategories.ai
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+                : "none",
+              fontSize: "15px",
+              color: "#fff",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             AI
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("cs")}
             style={{
               backgroundColor: selectedCategories.cs ? "#d6a638" : "#ecbd50",
-              "box-shadow": selectedCategories.cs
+              boxShadow: selectedCategories.cs
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
                 : "",
+              color: "#ffffff",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             CS
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("coding")}
@@ -218,21 +237,27 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
               backgroundColor: selectedCategories.coding
                 ? "#53ac3c"
                 : "#6dc356",
-              "box-shadow": selectedCategories.coding
+              color: "#ffffff",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+              boxShadow: selectedCategories.coding
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+                : "none",
             }}
           >
             개발
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("teach")}
             style={{
               backgroundColor: selectedCategories.teach ? "#395690" : "#536fa7",
-              "box-shadow": selectedCategories.teach
-                ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+              color: "#fff",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             교직
