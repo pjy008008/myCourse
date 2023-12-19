@@ -9,7 +9,7 @@ td {
   width: 100px;
   height: 65px;
   text-align: center;
-  border: 2px solid #5571AA;
+  border: 2px solid #5571aa;
   vertical-align: left;
 }
 th {
@@ -111,16 +111,16 @@ a {
 .sum1,
 .sum2 {
   padding-top: 10px;
-  margin-left: 250px;
-  margin-right: 250px;
-  text-align: left;
-  width: 480px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+  width: 780px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 세 개의 컬럼으로 나눔 */
   grid-row: span 1; /* 각각의 sum1, sum2가 한 로우를 차지하도록 설정 */
 }
 #ge {
-  background-color: #3F72AF;
+  background-color: #3f72af;
   color: aliceblue;
 }
 #leftSum {
@@ -141,6 +141,6 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #dbe2ef;
   text-align: center;
 }
-.out{
+.out {
   font-weight: 700;
 }
