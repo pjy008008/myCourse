@@ -143,6 +143,17 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
       alert(error.response.data.message);
     }
   };
+
+  const getSubjectCategory = (category) => {
+    if (category === "0") {
+      return "전선";
+    } else if (category === "1") {
+      return "전필";
+    } else if (category === "2") {
+      return "일선";
+    }
+  };
+
   return (
     <div>
       <div className={styles.selectContainer}>
@@ -239,7 +250,7 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
                   type="checkbox"
                   onChange={() => handleCheckboxChange(item.subnum)}
                 />
-                {item.category}-{item.subname}-{item.score}{" "}
+                {getSubjectCategory(item.category)}-{item.subname}-{item.score}{" "}
                 {item.ai && <img src={ai} alt="ai" />}
                 {item.cs && <img src={cs} alt="cs" />}
                 {item.coding && <img src={coding} alt="coding" />}
