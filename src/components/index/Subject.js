@@ -200,12 +200,13 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
             className={styles.categoryBtn}
             onClick={() => toggleCategory("ai")}
             style={{
-              backgroundColor: selectedCategories.ai ? "#cc5448" : "#e26a5e",
+              backgroundColor: selectedCategories.ai ? "#e26a5e" : "white",
+              border: "2px solid #e26a5e",
               boxShadow: selectedCategories.ai
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
                 : "none",
               fontSize: "15px",
-              color: "#fff",
+              color: selectedCategories.ai ? "white" : "#e26a5e",
               fontWeight: "bold",
               borderRadius: "10px",
             }}
@@ -217,11 +218,9 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
             className={styles.categoryBtn}
             onClick={() => toggleCategory("cs")}
             style={{
-              backgroundColor: selectedCategories.cs ? "#d6a638" : "#ecbd50",
-              boxShadow: selectedCategories.cs
-                ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
-              color: "#ffffff",
+              backgroundColor: selectedCategories.cs ? "#ecbd50" : "white",
+              border: "2px solid #ecbd50",
+              color: selectedCategories.cs ? "white" : "#ecbd50",
               fontSize: "15px",
               fontWeight: "bold",
               borderRadius: "10px",
@@ -234,10 +233,9 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
             className={styles.categoryBtn}
             onClick={() => toggleCategory("coding")}
             style={{
-              backgroundColor: selectedCategories.coding
-                ? "#53ac3c"
-                : "#6dc356",
-              color: "#ffffff",
+              backgroundColor: selectedCategories.coding ? "#6dc356" : "white",
+              border: "2px solid #6dc356",
+              color: selectedCategories.coding ? "white" : "#6dc356",
               fontSize: "15px",
               fontWeight: "bold",
               borderRadius: "10px",
@@ -253,8 +251,9 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
             className={styles.categoryBtn}
             onClick={() => toggleCategory("teach")}
             style={{
-              backgroundColor: selectedCategories.teach ? "#395690" : "#536fa7",
-              color: "#fff",
+              backgroundColor: selectedCategories.teach ? "#536fa7" : "white",
+              border: "2px solid #536fa7",
+              color: selectedCategories.teach ? "white" : "#536fa7",
               fontSize: "15px",
               fontWeight: "bold",
               borderRadius: "10px",
