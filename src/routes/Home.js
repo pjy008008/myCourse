@@ -166,7 +166,7 @@ const Home = () => {
                     name="ge"
                     type="number"
                     onChange={onChange}
-                    value={ge}
+                    value={ge === 0 ? "입력" : ge}
                     id={styles.ge}
                     placeholder="입력"
                     className={styles.in}
