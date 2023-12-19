@@ -50,7 +50,10 @@ const Home = () => {
     if (name === "sem") {
       setSem(value);
     } else if (name === "ge") {
-      setGe(value);
+      setGe((prev) => value);
+      if (value === null) {
+        setGe(0);
+      }
     }
     console.log(sem);
   };
@@ -90,17 +93,22 @@ const Home = () => {
       .flat()
       .filter((subnum) => getSubjectCategory(subnum) === "전필")
       .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
-
+  
     const newOptionalSum = subject
       .flat()
       .filter((subnum) => getSubjectCategory(subnum) === "전선")
       .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
-
+  
     setNeccesarrySum(newNeccesarrySum);
     setOptionalSum(newOptionalSum);
     setMajorSum(newNeccesarrySum + newOptionalSum);
-    setSum(parseInt(majorSum) + parseInt(ge));
-  }, [subject, getSubjectScore, getSubjectCategory, ge]);
+  
+    // Ensure ge is a numeric value or set it to 0 if it's null or empty string
+    const numericGe = ge !== null && ge !== "" ? parseInt(ge) : 0;
+  
+    // Add numericGe and majorSum
+    setSum(numericGe + parseInt(majorSum));
+  }, [subject, getSubjectScore, getSubjectCategory, ge, majorSum]);
 
   return (
     <div>
