@@ -4,7 +4,6 @@
   justify-content: center;
 }
 
-
 .cbnuLogo {
   margin-top: 10px;
   margin-left: 15px;
@@ -15,20 +14,19 @@
   margin-top: 10px;
 }
 .aboveContainer {
-  width: 88vw;
+  width: 90vw;
   height: 35vh;
-  margin-left: 100px;
-  margin-bottom: 50px;
+  margin-left: 70px;
+  margin-bottom: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
 }
 
 .textContainer {
   display: grid;
   grid-template-columns: 123px 145px;
   justify-items: center;
-  
+
   margin-top: 20px;
   margin-left: 17px;
   margin-bottom: 13px;
@@ -38,7 +36,7 @@
   display: grid;
   grid-template-columns: 123px 175px;
   justify-items: center;
-  
+
   margin-top: 20px;
   margin-left: 17px;
   margin-bottom: 13px;
@@ -48,7 +46,7 @@
   display: grid;
   grid-template-columns: 105px 215px;
   justify-items: center;
-  
+
   margin-top: 25px;
   margin-left: 17px;
   margin-bottom: 0px;
@@ -58,7 +56,6 @@
   display: grid;
   grid-template-columns: 105px 155px;
   justify-items: center;
-  
   margin-top: 20px;
   margin-left: 17px;
   padding-bottom: 10px;
@@ -67,7 +64,7 @@
 .textContainer3 {
   display: grid;
   grid-template-columns: 150px 30px 280px;
-  
+
   text-align: left;
   margin-top: 20px;
   margin-left: 45px;
@@ -87,7 +84,7 @@
   text-align: left;
   font-size: 18px;
   padding-left: 50px;
-  
+
   padding-top: 10px;
   padding-bottom: 5px;
   font-weight: bold;
@@ -97,7 +94,6 @@
   text-align: left;
   font-size: 19px;
   padding-left: 50px;
-  
   padding-top: 5px;
   padding-bottom: 10px;
   font-weight: bold;
@@ -106,9 +102,8 @@
 .textleft2Container {
   text-align: left;
   font-size: 19px;
+  padding-top: 5px;
   padding-left: 50px;
-  
-  padding-top: 20px;
   padding-bottom: 10px;
   font-weight: bold;
 }
@@ -128,28 +123,27 @@
 
 .userInf {
   margin-left: 100px;
-  margin-right: 10px;
+  margin-right: 20px;
   border-radius: 30px;
   background-color: white;
 }
 .schoolInf {
-  margin-left: 5px;
+  margin-left: 20px;
   margin-right: 100px;
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.7);
   border: #112d4e;
 }
 .underContainer {
-  width: 88vw;
+  width: 90vw;
   height: 35vh;
-  margin-left: 100px;
-  margin-left: 100px;
+  margin-left: 70px;
 }
 .academicInf {
   margin-left: 100px;
   margin-right: 100px;
   border-radius: 30px;
-  height: 35vh;
+  height: 30vh;
   margin-top: 20px;
   background-color: white;
 }
@@ -164,7 +158,8 @@
   border-radius: 30px 30px 0px 0px;
 }
 
-.logoutBtn  { /*mycourse 저장*/
+.logoutBtn {
+  /*mycourse 저장*/
   position: fixed;
   right: 210px;
   top: 0px;
@@ -209,9 +204,7 @@
   border: none;
 }
 
-.academicContext{
+.academicContext {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
-
