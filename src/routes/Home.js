@@ -99,7 +99,7 @@ const Home = () => {
     setNeccesarrySum(newNeccesarrySum);
     setOptionalSum(newOptionalSum);
     setMajorSum(newNeccesarrySum + newOptionalSum);
-    setSum(majorSum + ge);
+    setSum(parseInt(majorSum) + parseInt(ge));
   }, [subject, getSubjectScore, getSubjectCategory, ge]);
 
   return (
@@ -116,8 +116,8 @@ const Home = () => {
                 onChange={onChange}
                 value={ge}
                 placeholder="교양점수 입력"
-              />,
-              전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
+              />
+              , 전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
               {majorSum} 학점 총합: {sum}
             </div>
             <table className={styles.table}>
