@@ -28,6 +28,7 @@
   height: 22px;
 }
 .selection {
+  margin-top: 3px;
   width: 175px;
   height: 47px;
   border-radius: 5px;

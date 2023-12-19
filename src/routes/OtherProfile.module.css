@@ -5,16 +5,16 @@
 }
 
 table {
-  margin-top:50px;
+  margin-top: 50px;
   border-collapse: collapse;
   width: 100%;
-  border:none;
+  border: none;
   font-weight: bold;
 }
 body th,
 td {
   width: 100px;
-  height: 65px;
+  height: 50px;
   text-align: center;
   border-right: none;
   border-bottom: none;
@@ -47,7 +47,9 @@ a {
   border-right: none;
 }
 .mainContainer {
-  background-color: #112d4e;
+  background-color: white;
+  padding-bottom: 50px;
+  overflow-x: hidden;
 }
 .contentContainer {
   margin-top: 20px;
@@ -67,12 +69,12 @@ a {
   height: 120vh;
   background-color: white;
   border-radius: 40px;
-  border: none;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .imageContainer img {
   margin-top: 40px;
   margin-left: 10px;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .textContainer {
@@ -88,8 +90,8 @@ a {
   font-weight: bold;
 }
 
-
-.userContainer{
+.userContainer {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   position: absolute;
   left: 150px;
   top: 250px;
@@ -102,14 +104,16 @@ a {
   grid-template-columns: 1fr 1fr;
 }
 
-.storeBtn{
+.storeBtn {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   align-items: center;
   font-weight: bold;
   position: absolute;
   left: 150px;
   top: 450px;
-  border:none;
-  background-color: white;
+  border: none;
+  background-color: #e7e7e7;
   border-radius: 10px;
   width: 400px;
   height: 60px;
@@ -118,15 +122,20 @@ a {
   text-align: center;
   font-size: 12pt;
 }
+.storeBtn:hover {
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
 
-.goBackBtn{
+.goBackBtn {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   align-items: center;
   position: absolute;
   font-weight: bold;
   left: 150px;
   top: 520px;
-  border:none;
-  background-color: white;
+  border: none;
+  background-color: #e7e7e7;
   border-radius: 10px;
   width: 400px;
   height: 60px;
@@ -136,7 +145,11 @@ a {
   font-size: 12pt;
 }
 
-.container{
+.goBackBtn:hover {
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.container {
   background-color: white;
   width: 800px;
   height: 0px;
