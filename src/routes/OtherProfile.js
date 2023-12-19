@@ -180,11 +180,11 @@ const OtherProfile = () => {
                   {[0, 1].map((col) => (
                     <td key={col}>
                       {userData.subject[row + col].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))}
                     </td>
                   ))}

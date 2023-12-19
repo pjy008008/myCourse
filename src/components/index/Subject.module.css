@@ -50,6 +50,7 @@
 }
 .categoryButtons{
   width: 450px;
+  margin-top: 7px;
   vertical-align: middle;
 }
 .categoryBtn{

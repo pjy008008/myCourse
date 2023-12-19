@@ -15,6 +15,7 @@ const Home = () => {
   const [optionalSum, setOptionalSum] = useState(0);
   const [majorSum, setMajorSum] = useState(0);
   const [sum, setSum] = useState(0);
+  const [leftSum, setLeftSum] = useState(140);
 
   const fetchData = async () => {
     try {
@@ -93,21 +94,22 @@ const Home = () => {
       .flat()
       .filter((subnum) => getSubjectCategory(subnum) === "전필")
       .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
-  
+
     const newOptionalSum = subject
       .flat()
       .filter((subnum) => getSubjectCategory(subnum) === "전선")
       .reduce((acc, subnum) => acc + getSubjectScore(subnum), 0);
-  
+
     setNeccesarrySum(newNeccesarrySum);
     setOptionalSum(newOptionalSum);
     setMajorSum(newNeccesarrySum + newOptionalSum);
-  
+
     // Ensure ge is a numeric value or set it to 0 if it's null or empty string
     const numericGe = ge !== null && ge !== "" ? parseInt(ge) : 0;
-  
+
     // Add numericGe and majorSum
     setSum(numericGe + parseInt(majorSum));
+    setLeftSum(140 - sum);
   }, [subject, getSubjectScore, getSubjectCategory, ge, majorSum]);
 
   return (
@@ -118,45 +120,65 @@ const Home = () => {
           <div className={styles.tableContainer}>
             <div className={styles.sum}>
               <div className={styles.sum1}>
-              <label className={styles.out} >전공필수 </label>
-              <input
-              type="number"
-              value={neccesarrySum}
-              disabled
-              className={styles.in}
-              />
-              <label className={styles.out} >전공선택 </label>
-              <input
-              type="number"
-              value={optionalSum}
-              disabled
-              className={styles.in}
-              /> 
-              <label className={styles.out} >교양학점 </label>
-              <input
-                name="ge"
-                type="number"
-                onChange={onChange}
-                value={ge}
-                placeholder="입력"
-                className={styles.in}
-              />
+                <div>
+                  <label className={styles.out}>전공 필수 </label>
+                  <input
+                    type="number"
+                    value={neccesarrySum}
+                    disabled
+                    className={styles.in}
+                  />
+                </div>
+                <div>
+                  <label className={styles.out}>전공 선택 </label>
+                  <input
+                    type="number"
+                    value={optionalSum}
+                    disabled
+                    className={styles.in}
+                  />
+                </div>
+                <div>
+                  <label className={styles.out}>전공 총합 </label>
+                  <input
+                    type="number"
+                    value={majorSum}
+                    disabled
+                    className={styles.in}
+                  />
+                </div>
               </div>
-              <div className={styles.sum2}> 
-              <label className={styles.out} >전공 총합 </label>
-              <input
-                type="number"
-                value={majorSum}
-                disabled
-                className={styles.in}
-              />
-              <label className={styles.out} >전공총합 </label>
-              <input
-                type="number"
-                value={sum}
-                disabled
-                className={styles.in}
-              />
+              <div className={styles.sum2}>
+                <div>
+                  <label className={styles.out}>교양 학점 </label>
+                  <input
+                    name="ge"
+                    type="number"
+                    onChange={onChange}
+                    value={ge}
+                    id={styles.ge}
+                    placeholder="입력"
+                    className={styles.in}
+                  />
+                </div>
+                <div>
+                  <label className={styles.out}>학점 총합 </label>
+                  <input
+                    type="number"
+                    value={sum}
+                    disabled
+                    className={styles.in}
+                  />
+                </div>
+                <div>
+                  <label className={styles.out}>필요 학점 </label>
+                  <input
+                    type="number"
+                    value={leftSum}
+                    disabled
+                    className={styles.in}
+                  />
+                </div>
               </div>
             </div>
             <table className={styles.table}>
