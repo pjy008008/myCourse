@@ -6,7 +6,7 @@ import coding from "../../image/2.png";
 import teach from "../../image/4.png";
 import { useState, useEffect } from "react";
 
-const Subject = ({ subject, setSubject, selectSem }) => {
+const Subject = ({ ge, subject, setSubject, selectSem }) => {
   const [grade, setGrade] = useState("");
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
@@ -126,7 +126,7 @@ const Subject = ({ subject, setSubject, selectSem }) => {
     try {
       const response = await axios.put(
         "http://localhost:8080/member",
-        { subject },
+        { subject, ge },
         {
           headers: {
             Accept: "application/json;charset=UTF-8",
@@ -181,7 +181,9 @@ const Subject = ({ subject, setSubject, selectSem }) => {
             onClick={() => toggleCategory("ai")}
             style={{
               backgroundColor: selectedCategories.ai ? "#cc5448" : "#e26a5e",
-              "box-shadow": selectedCategories.ai ? "0 0 10px rgba(0, 0, 0, 0.3)" : "",
+              "box-shadow": selectedCategories.ai
+                ? "0 0 10px rgba(0, 0, 0, 0.3)"
+                : "",
             }}
           >
             AI
@@ -191,7 +193,9 @@ const Subject = ({ subject, setSubject, selectSem }) => {
             onClick={() => toggleCategory("cs")}
             style={{
               backgroundColor: selectedCategories.cs ? "#d6a638" : "#ecbd50",
-              "box-shadow": selectedCategories.cs ? "0 0 10px rgba(0, 0, 0, 0.3)" : "",
+              "box-shadow": selectedCategories.cs
+                ? "0 0 10px rgba(0, 0, 0, 0.3)"
+                : "",
             }}
           >
             CS

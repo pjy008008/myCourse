@@ -34,6 +34,7 @@ const Register = ({ setToggle, setIsLoggedIn }) => {
           completionsem: completionsem,
           subject: subject,
           onoff: true,
+          ge:0,
         },
         {
           "Content-Type": "application/json;charset=UTF-8",

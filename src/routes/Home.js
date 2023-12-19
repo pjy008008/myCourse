@@ -4,14 +4,16 @@ import List from "../components/List";
 import Subject from "../components/index/Subject";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { setgid } from "process";
 
 const Home = () => {
-  const [user, setUser] = useState({});
+  const [ge, setGe] = useState(0);
   const [sem, setSem] = useState(0);
   const [subject, setSubject] = useState([]);
   const [subjectDB, setSubjectDB] = useState([]);
   const [neccesarrySum, setNeccesarrySum] = useState(0);
   const [optionalSum, setOptionalSum] = useState(0);
+  const [majorSum, setMajorSum] = useState(0);
   const [sum, setSum] = useState(0);
 
   const fetchData = async () => {
@@ -23,7 +25,7 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser((prev) => response);
+      setGe(response.data.data.ge);
       setSubject(response.data.data.subject);
       console.log(response.data.data.subject);
     } catch (error) {
@@ -37,7 +39,6 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUser((prev) => response);
       setSubjectDB(response.data.data);
       console.log(response.data.data);
     } catch (error) {
@@ -48,6 +49,8 @@ const Home = () => {
     const { name, value } = event.target;
     if (name === "sem") {
       setSem(value);
+    } else if (name === "ge") {
+      setGe(value);
     }
     console.log(sem);
   };
@@ -95,8 +98,9 @@ const Home = () => {
 
     setNeccesarrySum(newNeccesarrySum);
     setOptionalSum(newOptionalSum);
-    setSum(newNeccesarrySum + newOptionalSum);
-  }, [subject, getSubjectScore, getSubjectCategory]);
+    setMajorSum(newNeccesarrySum + newOptionalSum);
+    setSum(majorSum + ge);
+  }, [subject, getSubjectScore, getSubjectCategory, ge]);
 
   return (
     <div>
@@ -105,8 +109,16 @@ const Home = () => {
         <div className={styles.contentContainer}>
           <div className={styles.tableContainer}>
             <div className={styles.sum}>
+              <label>교양학점 :</label>
+              <input
+                name="ge"
+                type="number"
+                onChange={onChange}
+                value={ge}
+                placeholder="교양점수 입력"
+              />,
               전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
-              {sum}
+              {majorSum} 학점 총합: {sum}
             </div>
             <table className={styles.table}>
               <thead>
@@ -292,6 +304,7 @@ const Home = () => {
               </select>
             </div>
             <Subject
+              ge={ge}
               subject={subject}
               setSubject={setSubject}
               selectSem={sem}
