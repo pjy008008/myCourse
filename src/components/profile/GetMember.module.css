@@ -168,7 +168,7 @@
   position: fixed;
   right: 210px;
   top: 0px;
-  
+  cursor: pointer;
   background-color: white;
   color: #1e2d4b;
   font-size: 18px;
@@ -180,6 +180,7 @@
 }
 
 .delBtn {
+  cursor: pointer;
   position: fixed;
   right: 430px;
   top: 0px;
@@ -194,6 +195,7 @@
 }
 
 .changeBtn {
+  cursor: pointer;
   position: fixed;
   right: 340px;
   top: 0px;
