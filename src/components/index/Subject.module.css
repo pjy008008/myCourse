@@ -48,6 +48,7 @@
   height: 70px;
   border-radius: 0px 0px 15px 15px;
   border: none;
+  cursor: pointer;
 }
 .categoryButtons{
   width: 450px;
@@ -58,6 +59,7 @@
   line-height: 1.5;
   vertical-align: middle;
   width: 80px;
-  height: 30px;
+  height: 40px;
   border: none;
+  margin-left: 5px;
 }

@@ -11,10 +11,10 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState({
-    ai: true,
-    cs: true,
-    coding: true,
-    teach: true,
+    ai: false,
+    cs: false,
+    coding: false,
+    teach: false,
   });
   // const [subject, setSubject] = useState([]);
   useEffect(() => {
@@ -72,10 +72,10 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
         (sem === "" || item.sem === parseInt(sem));
 
       const meetsCategoryConditions =
-        (selectedCategories.ai && item.ai) ||
-        (selectedCategories.cs && item.cs) ||
-        (selectedCategories.coding && item.coding) ||
-        (selectedCategories.teach && item.teach);
+        (!selectedCategories.ai || item.ai) &&
+        (!selectedCategories.cs || item.cs) &&
+        (!selectedCategories.coding || item.coding) &&
+        (!selectedCategories.teach || item.teach);
 
       return meetsGradeAndSemConditions && meetsCategoryConditions;
     });
@@ -184,55 +184,79 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
       </div>
       <div>
         <div className={styles.categoryButtons}>
-          <button className={styles.categoryBtn} onClick={toggleAllCategories}>
+          <button
+            className={styles.categoryBtn}
+            onClick={toggleAllCategories}
+            style={{
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+            }}
+          >
             전체
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("ai")}
             style={{
-              backgroundColor: selectedCategories.ai ? "#cc5448" : "#e26a5e",
-              "box-shadow": selectedCategories.ai
+              backgroundColor: selectedCategories.ai ? "#e26a5e" : "white",
+              border: "2px solid #e26a5e",
+              boxShadow: selectedCategories.ai
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+                : "none",
+              fontSize: "15px",
+              color: selectedCategories.ai ? "white" : "#e26a5e",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             AI
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("cs")}
             style={{
-              backgroundColor: selectedCategories.cs ? "#d6a638" : "#ecbd50",
-              "box-shadow": selectedCategories.cs
-                ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+              backgroundColor: selectedCategories.cs ? "#ecbd50" : "white",
+              border: "2px solid #ecbd50",
+              color: selectedCategories.cs ? "white" : "#ecbd50",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             CS
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("coding")}
             style={{
-              backgroundColor: selectedCategories.coding
-                ? "#53ac3c"
-                : "#6dc356",
-              "box-shadow": selectedCategories.coding
+              backgroundColor: selectedCategories.coding ? "#6dc356" : "white",
+              border: "2px solid #6dc356",
+              color: selectedCategories.coding ? "white" : "#6dc356",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+              boxShadow: selectedCategories.coding
                 ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+                : "none",
             }}
           >
             개발
           </button>
+
           <button
             className={styles.categoryBtn}
             onClick={() => toggleCategory("teach")}
             style={{
-              backgroundColor: selectedCategories.teach ? "#395690" : "#536fa7",
-              "box-shadow": selectedCategories.teach
-                ? "0 0 10px rgba(0, 0, 0, 0.3)"
-                : "",
+              backgroundColor: selectedCategories.teach ? "#536fa7" : "white",
+              border: "2px solid #536fa7",
+              color: selectedCategories.teach ? "white" : "#536fa7",
+              fontSize: "15px",
+              fontWeight: "bold",
+              borderRadius: "10px",
             }}
           >
             교직

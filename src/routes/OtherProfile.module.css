@@ -82,7 +82,7 @@ a {
   grid-template-columns: 120px 100px;
   justify-items: center;
   padding-left: 1px;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-right: 50px;
 }
 
@@ -121,6 +121,7 @@ a {
   display: grid;
   text-align: center;
   font-size: 12pt;
+  cursor: pointer;
 }
 .storeBtn:hover {
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
@@ -143,6 +144,7 @@ a {
   display: grid;
   text-align: center;
   font-size: 12pt;
+  cursor: pointer;
 }
 
 .goBackBtn:hover {

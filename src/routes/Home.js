@@ -51,12 +51,12 @@ const Home = () => {
     if (name === "sem") {
       setSem(value);
     } else if (name === "ge") {
-      setGe((prev) => value);
-      if (value === null) {
-        setGe(0);
+      if (value >= 40) {
+        setGe(40);
+      } else {
+        setGe(value);
       }
     }
-    console.log(sem);
   };
 
   const getSubjectName = (subnum) => {
