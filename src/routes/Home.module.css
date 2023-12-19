@@ -136,7 +136,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 0px;
   padding-left: 5px;
   padding-right: 5px;
-  width: 80px;
+  width: 75px;
   border: none;
   background-color: #dbe2ef;
   text-align: center;
@@ -145,5 +145,5 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 700;
 }
 #ge::placeholder {
-  color: white;
+  color: white; /* 여러분이 원하는 색상으로 변경하세요. */
 }
