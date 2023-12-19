@@ -109,16 +109,47 @@ const Home = () => {
         <div className={styles.contentContainer}>
           <div className={styles.tableContainer}>
             <div className={styles.sum}>
-              <label>교양학점 :</label>
+              <div className={styles.sum1}>
+              <label className={styles.out} >전공필수 </label>
+              <input
+              type="number"
+              value={neccesarrySum}
+              disabled
+              className={styles.in}
+              />
+              <label className={styles.out} >전공선택 </label>
+              <input
+              type="number"
+              value={optionalSum}
+              disabled
+              className={styles.in}
+              /> 
+              <label className={styles.out} >교양학점 </label>
               <input
                 name="ge"
                 type="number"
                 onChange={onChange}
                 value={ge}
-                placeholder="교양점수 입력"
+                placeholder="입력"
+                className={styles.in}
               />
-              , 전필총합 : {neccesarrySum}, 전선총합 : {optionalSum}, 전공 총합:{" "}
-              {majorSum} 학점 총합: {sum}
+              </div>
+              <div className={styles.sum2}> 
+              <label className={styles.out} >전공 총합 </label>
+              <input
+                type="number"
+                value={majorSum}
+                disabled
+                className={styles.in}
+              />
+              <label className={styles.out} >전공총합 </label>
+              <input
+                type="number"
+                value={sum}
+                disabled
+                className={styles.in}
+              />
+              </div>
             </div>
             <table className={styles.table}>
               <thead>

@@ -1,14 +1,14 @@
 .listContainer{
   display: grid;
   padding-top: 10px;
-  grid-template-columns: 350px 100px 150px;
+  grid-template-columns: 300px 100px 150px;
   width: 600px;
   align-items: baseline;
   margin-left: 110px;
 }
 .title{
   color: white;
-  padding-left: 100px;
+  padding-left: 30px;
   font-size: 45px;
   font-weight: bold;
 }

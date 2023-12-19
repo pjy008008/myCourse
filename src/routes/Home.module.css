@@ -98,5 +98,18 @@ a {
   background-color: #DBE2EF;
 }
 .sum{
-  color: white;
+  background-color: white;
+  width: 980px;
+  height:110px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.in{
+  width:50px;
 }

@@ -4,8 +4,8 @@
   list-style-type: none;
   padding-left: 15px;
   text-align: left;
-  height: 83vh;
-  overflow-y: auto; /* 수직 스크롤 활성화 */
+  height: 67vh;
+  overflow-y: auto;
   margin-top: 0px;
 }
 .subjectList::-webkit-scrollbar {
@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: 190px 190px;
   justify-items: center;
-  padding-left: 15px;
+  padding-left: 25px;
   overflow-y: hidden;
   /* 수직 스크롤 제거 */
 }
@@ -53,7 +53,7 @@
   vertical-align: middle;
 }
 .categoryBtn{
-  line-height: 1.5; /* Adjust the value to your preference */
+  line-height: 1.5;
   vertical-align: middle;
   width: 80px;
   height: 30px;
