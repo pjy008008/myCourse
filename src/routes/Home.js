@@ -139,11 +139,11 @@ const Home = () => {
                   >
                     {subject.length > 0 && subject[0] ? (
                       subject[0].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -157,11 +157,11 @@ const Home = () => {
                   >
                     {subject.length > 1 && subject[1] ? (
                       subject[1].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -176,11 +176,11 @@ const Home = () => {
                   >
                     {subject.length > 2 && subject[2] ? (
                       subject[2].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -194,11 +194,11 @@ const Home = () => {
                   >
                     {subject.length > 3 && subject[3] ? (
                       subject[3].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -213,11 +213,11 @@ const Home = () => {
                   >
                     {subject.length > 4 && subject[4] ? (
                       subject[4].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -231,11 +231,11 @@ const Home = () => {
                   >
                     {subject.length > 5 && subject[5] ? (
                       subject[5].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -252,11 +252,11 @@ const Home = () => {
                   >
                     {subject.length > 6 && subject[6] ? (
                       subject[6].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
@@ -270,11 +270,11 @@ const Home = () => {
                   >
                     {subject.length > 7 && subject[7] ? (
                       subject[7].map((subject, i) => (
-                        <p key={i}>{`${getSubjectCategory(
+                        <p key={i}>{`[${getSubjectCategory(
                           subject
-                        )}-${getSubjectName(subject)} ${getSubjectScore(
+                        )}] ${getSubjectName(subject)} (${getSubjectScore(
                           subject
-                        )}`}</p>
+                        )}학점)`}</p>
                       ))
                     ) : (
                       <div></div>
