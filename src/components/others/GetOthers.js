@@ -138,6 +138,14 @@ const GetOthers = () => {
               <div className={styles.textContainer}>
                 <div className={styles.boldText}>학번</div>
                 <div>{item.stdnum}</div>
+                <div className={styles.boldText}>선호 분야</div>
+                <div>
+                  {item.prefer === "ai" && "AI"}
+                  {item.prefer === "cs" && "컴퓨터시스템"}
+                  {item.prefer === "coding" && "개발"}
+                  {item.prefer === "teach" && "교직"}
+                </div>
+
                 <div className={styles.boldText}>이수 학년·학기</div>
                 <div>{handleSem(item.completionsem)}</div>
               </div>
