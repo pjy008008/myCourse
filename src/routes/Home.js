@@ -87,7 +87,7 @@ const Home = () => {
     }else if(matchingSubject.category===1){
       return "전선"
     }else if(matchingSubject.category===2){
-      return "교직"
+      return "일선"
     }
     // 찾은 객체가 있다면 해당 객체의 subname을 반환, 없다면 빈 문자열 반환
     return matchingSubject ? matchingSubject.category : "";
