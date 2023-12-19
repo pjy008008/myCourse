@@ -132,14 +132,15 @@ const GetMember = ({ setIsLoggedIn }) => {
           <h2 className={styles.subTitle}>회원정보</h2>
           <form onSubmit={onSubmit}>
             <div>
-              {user ? (
-                <div className={styles.textContainer0}>
-                  <div className={styles.boldText}>아이디</div>
-                  <div>{user?.data?.account}</div>
+              <div className={styles.textleftContainer00}>
+                  <div>아이디
+                  <input
+                  className={styles.marginLeft2}
+                  value={user?.data?.account}
+                  disabled
+                />
                 </div>
-              ) : (
-                <div>Loading...</div>
-              )}
+                </div>
             </div>
             <div className={styles.textleftContainer}>
               <div>
@@ -166,7 +167,7 @@ const GetMember = ({ setIsLoggedIn }) => {
                 placeholder="변경 비밀번호"
               />
             </div>
-            <div className={styles.textleftContainer}>
+            <div className={styles.textleftContainer01}>
               비밀번호 확인
               <input
                 className={styles.marginLeft}
@@ -261,25 +262,37 @@ const GetMember = ({ setIsLoggedIn }) => {
           <div className={styles.academicContext}>
             <div className={styles.leftContainer}>
               <div className={styles.textContainer1}>
-                <div className={styles.boldText}>학과</div>
-                <div>소프트웨어</div>
+              <div className={styles.textleftContainer00}>
+                  <div>학과
+                  <input
+                  className={styles.marginLeft3}
+                  value="소프트웨어"
+                  disabled
+                />
+                </div>
+                </div>
               </div>
               <div>
                 {user ? (
-                  <div className={styles.textContainer2}>
-                    <div className={styles.boldText}>학번</div>
-                    <div>{user?.data?.stdnum}</div>
-                  </div>
+                  <div className={styles.textleftContainer}>
+                  <div>학번
+                  <input
+                  className={styles.marginLeft3}
+                  value={user?.data?.stdnum}
+                  disabled
+                />
+                </div>
+                </div>
                 ) : (
                   <div>Loading...</div>
                 )}
               </div>
               <div>
                 {user ? (
-                  <div className={styles.textleft2Container}>
+                  <div className={styles.textleftContainer01}>
                     이수 학년·학기
                     <select
-                      className={styles.marginLeft}
+                      className={styles.marginLeft1}
                       value={sem}
                       onChange={onChange}
                       name="sem"
@@ -343,7 +356,7 @@ const GetMember = ({ setIsLoggedIn }) => {
               {" "}
               <div>
                 {user ? (
-                  <div className={styles.textleft2Container}>
+                  <div className={styles.textleftContainer02}>
                     선호 분야
                     <select
                       className={styles.marginLeft}
