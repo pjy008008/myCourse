@@ -115,9 +115,11 @@ const Home = () => {
 
     // Ensure ge is a numeric value or set it to 0 if it's null or empty string
     const numericGe = ge !== null && ge !== "" ? parseInt(ge) : 0;
-
     // Add numericGe and majorSum
     setSum(numericGe + parseInt(majorSum));
+    if (sum >= 140) {
+      setSum(140);
+    }
     setLeftSum(140 - sum);
   }, [subject, getSubjectScore, getSubjectCategory, ge, majorSum]);
 
