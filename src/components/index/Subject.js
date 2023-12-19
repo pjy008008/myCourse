@@ -11,10 +11,10 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
   const [sem, setSem] = useState("");
   const [subjectData, setSubjectData] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState({
-    ai: true,
-    cs: true,
-    coding: true,
-    teach: true,
+    ai: false,
+    cs: false,
+    coding: false,
+    teach: false,
   });
   // const [subject, setSubject] = useState([]);
   useEffect(() => {
