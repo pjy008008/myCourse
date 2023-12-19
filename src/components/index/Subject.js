@@ -72,10 +72,10 @@ const Subject = ({ ge, subject, setSubject, selectSem }) => {
         (sem === "" || item.sem === parseInt(sem));
 
       const meetsCategoryConditions =
-        (selectedCategories.ai && item.ai) ||
-        (selectedCategories.cs && item.cs) ||
-        (selectedCategories.coding && item.coding) ||
-        (selectedCategories.teach && item.teach);
+        (!selectedCategories.ai || item.ai) &&
+        (!selectedCategories.cs || item.cs) &&
+        (!selectedCategories.coding || item.coding) &&
+        (!selectedCategories.teach || item.teach);
 
       return meetsGradeAndSemConditions && meetsCategoryConditions;
     });
