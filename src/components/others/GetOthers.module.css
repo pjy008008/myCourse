@@ -11,7 +11,7 @@ a {
 
 /* 또는 필요에 따라 이미지와 텍스트 간격을 조절할 수 있습니다. */
 .imageContainer img {
-  margin-top: 40px;
+  margin-top: 45px;
   margin-left: 10px;
   margin-right: 10px; /* 이미지 오른쪽 간격 조절 */
 }
@@ -103,9 +103,10 @@ a {
 .userContainer {
   background-color: #e7e7e7;
   border-radius: 10px;
+  width: 400px;
   height: 180px;
   margin: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
