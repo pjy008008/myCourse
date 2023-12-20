@@ -51,8 +51,8 @@ const Home = () => {
     if (name === "sem") {
       setSem(value);
     } else if (name === "ge") {
-      if (value >= 40) {
-        setGe(40);
+      if (value >= 56) {
+        setGe(56);
       } else {
         setGe(value);
       }
